@@ -18,3 +18,10 @@ model Workout {
   createdAt DateTime @default(now())
   time      Int
 }
+
+model Exercise {
+  id        String @id @default(cuid())
+  name      String
+  sets      Int
+  reps      Int 
+} 

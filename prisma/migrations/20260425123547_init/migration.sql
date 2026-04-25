@@ -7,3 +7,12 @@ CREATE TABLE "Workout" (
 
     CONSTRAINT "Workout_pkey" PRIMARY KEY ("id")
 );
+
+
+CREATE TABLE "EXERCISE"(
+    "id" INT NOT NULL,
+    "name" TEXT NOT NULL,
+    "sets" INT NOT NULL,
+    "reps" INT NOT NULL,
+    CONSTRAINT "Exercise_pkey" PRIMARY KEY ("id")
+)

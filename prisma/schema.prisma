@@ -16,7 +16,7 @@ model Workout {
   id        String   @id @default(cuid())
   name      String
   createdAt DateTime @default(now())
-  time      Int
+  userId    String
 }
 
 model Exercise {

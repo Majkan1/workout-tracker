@@ -4,7 +4,7 @@ A fullstack workout tracking app built with Next.js 16, Prisma, and Supabase. Lo
 
 ## 🔗 Live Demo
 
-[workout-tracker.vercel.app](#) ← dodaj po deploymencie
+[workout-tracker.vercel.app](#)
 
 ## ✨ Features
 

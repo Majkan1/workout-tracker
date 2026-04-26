@@ -1,5 +1,5 @@
 import { getPrisma } from "@/lib/prisma";
-
+import Form from "@/components/workout/WorkoutForm"
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
@@ -60,6 +60,7 @@ export default async function Home() {
           )}
         </div>
       </section>
+      <Form/>
     </main>
   );
 }

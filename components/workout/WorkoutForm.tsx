@@ -14,11 +14,13 @@ export default function Form(){
           onChange={(e)=>{setText(e.target.value)}}
           />
           <button onClick={ async () =>{
+            if(!text.trim()) return
             await createWorkout(text)
             setText("");
           }}>
             Add
           </button>
+          
       </form>
     </div>
   )

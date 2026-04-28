@@ -25,6 +25,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.svg" />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
         <ClerkProvider>
           <header className="flex justify-end items-center p-4 gap-4 h-16">

@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic";
 export default async function Home() {
   const {userId} = await auth();
   const workouts = await getPrisma().workout.findMany({
-    where:{userId},
+    where: userId ? { userId } : undefined,
     orderBy: {
       createdAt: "desc",
     },

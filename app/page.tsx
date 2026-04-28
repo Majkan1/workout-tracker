@@ -1,6 +1,7 @@
 import { getPrisma } from "@/lib/prisma";
 import Form from "@/components/workout/WorkoutForm"
 import { auth } from "@clerk/nextjs/server";
+import {Button} from "@/components/ui/button"
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
@@ -15,6 +16,7 @@ export default async function Home() {
   return (
     <main>
       <section>
+        <Button>Click me </Button>
         <div>
           <div>
             <h2>Workouts</h2>

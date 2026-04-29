@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { ClerkProvider, Show, SignInButton, SignUpButton, UserButton } from '@clerk/nextjs'
 import { Geist, Geist_Mono } from 'next/font/google'
+import Footer from '@/components/shared/Footer'
+import Navbar from '@/components/shared/Navbar'
 import './globals.css'
 
 const geistSans = Geist({
@@ -43,8 +45,10 @@ export default function RootLayout({
               <UserButton />
             </Show>
           </header>
+          <Navbar/>
           {children}
         </ClerkProvider>
+        <Footer/>
       </body>
     </html>
   )

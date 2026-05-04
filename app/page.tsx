@@ -5,6 +5,7 @@ export default function LandingPage(){
     <div>
       <Nav/>
       <Footer/>
+      <p>Get started</p>
     </div>
   )
 }

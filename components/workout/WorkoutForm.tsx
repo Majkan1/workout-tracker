@@ -1,5 +1,5 @@
 "use client"
-import { createWorkout } from "@/app/actions/workout"
+import { createWorkout } from "@/app/actions/createWorkout"
 import { useState } from "react"
 
 export default function Form(){

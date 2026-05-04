@@ -1,3 +1,5 @@
+import Form from "@/components/workout/WorkoutForm"
+
 export default function Page() {
-  return <div>Workout1</div>
+  return <div><Form/></div>
 }

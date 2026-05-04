@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: 'Workout Tracker',
-  description: 'Work uot tracker where you can easily track your workout',
+  description: 'App where you can easily track your workout',
 }
 
 export default function RootLayout({
@@ -28,10 +28,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/favicon.svg" />
+        <link rel="icon" href="./public/LOGO.png" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
-        <ClerkProvider signInUrl="/sign-in" signUpUrl="/sign-up">
+        <ClerkProvider signInUrl="/auth/sign-in" signUpUrl="/auth/sign-up">
           <header className="flex justify-end items-center p-4 gap-4 h-16">
             <Show when="signed-out">
               <SignInButton />

@@ -1,7 +1,5 @@
-export default function WorkingList(){
-  return(
-    <div>
-      
-    </div>
-  )
+import { redirect } from "next/navigation";
+
+export default function WorkoutsPage() {
+  redirect("/dashboard");
 }

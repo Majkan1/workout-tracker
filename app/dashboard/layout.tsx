@@ -3,6 +3,6 @@ import { redirect } from "next/navigation"
 
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
   const { userId } = await auth()
-  if (!userId) redirect("/sign-in")
+  if (!userId) redirect("/auth/sign-in")
   return <>{children}</>
 }

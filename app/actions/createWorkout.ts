@@ -14,5 +14,6 @@ export async function createWorkout(name:string){
             userId
         }
     })
-    revalidatePath("/");
+    revalidatePath("/dashboard");
+    revalidatePath("/dashboard/workouts/new");
 }

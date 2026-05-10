@@ -6,12 +6,20 @@ export const dynamic = "force-dynamic";
 
 export default async function DashboardPage() {
   const { userId } = await auth();
-  const workouts = await getPrisma().workout.findMany({
-    where: userId ? { userId } : undefined,
-    orderBy: {
-      createdAt: "desc",
-    },
-  });
+  let databaseError = false;
+  let workouts: { id: string; name: string; createdAt: Date }[] = [];
+
+  try {
+    workouts = await getPrisma().workout.findMany({
+      where: userId ? { userId } : undefined,
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+  } catch (error) {
+    databaseError = true;
+    console.error("Failed to load workouts", error);
+  }
 
   return (
     <main>
@@ -20,7 +28,9 @@ export default async function DashboardPage() {
           <div>
             <h1>My trainings</h1>
             <p>
-              {workouts.length === 0
+              {databaseError
+                ? "The database is not available right now."
+                : workouts.length === 0
                 ? "You do not have trainings yet. Add your first workout."
                 : `You have ${workouts.length} training${workouts.length === 1 ? "" : "s"}.`}
             </p>
@@ -29,7 +39,9 @@ export default async function DashboardPage() {
         </div>
 
         <div>
-          {workouts.length === 0 ? (
+          {databaseError ? (
+            <div>Start your database, then refresh this page.</div>
+          ) : workouts.length === 0 ? (
             <div>No workouts yet.</div>
           ) : (
             workouts.map((workout) => (

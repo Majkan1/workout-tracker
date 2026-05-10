@@ -17,6 +17,7 @@ model Workout {
   name      String
   createdAt DateTime @default(now())
   userId    String
+  exercises  Exercise[]
 }
 
 model Exercise {

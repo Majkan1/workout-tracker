@@ -17,11 +17,14 @@ model Workout {
   name      String
   createdAt DateTime @default(now())
   userId    String
+  exercises  Exercise[]
 }
 
 model Exercise {
-  id        String @id @default(cuid())
+  id        String   @id @default(cuid())
   name      String
   sets      Int
-  reps      Int 
+  reps      Int
+  workoutId String
+  workout   Workout  @relation(fields: [workoutId], references: [id])
 } 

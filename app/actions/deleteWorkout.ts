@@ -13,5 +13,5 @@ export async function deleteWorkout(id:string){
             userId
         }
     })
-    revalidatePath("/")
+    revalidatePath("/dashboard")
 }

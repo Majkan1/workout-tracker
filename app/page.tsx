@@ -1,7 +1,8 @@
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import Image from "next/image";
-
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 export const dynamic = "force-dynamic";
 
 export default async function LandingPage(){
@@ -21,9 +22,14 @@ export default async function LandingPage(){
           sizes="100vw"
           className="object-cover"
         />
-           <h1 className="absolute inset-0 z-10 flex items-center justify-center px-4 text-center text-6xl font-bold text-white sm:text-8xl">
-             Never give up
-           </h1>
+        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-6 px-4 text-center">
+          <h1 className="text-6xl font-bold text-white sm:text-8xl">
+            Never give up
+          </h1>
+          <Button asChild size="lg" className="px-8 py-6 text-lg">
+            <Link href="/auth/sign-up">Get started</Link>
+          </Button>
+        </div>
       </div>
       <h2 className="flex items-center justify-center m-4 text-6xl font-bold">
         Track your progress

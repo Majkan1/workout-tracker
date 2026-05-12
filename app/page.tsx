@@ -21,10 +21,10 @@ export default async function LandingPage(){
           sizes="100vw"
           className="object-cover"
         />
-        <h1 className="absolute text-9xl top-1/2 left-1/4 font-bold text-white">
-          Never give up
-        </h1>
       </div>
+      <h1 className="flex items-center justify-center m-4 text-6xl font-bold">
+        Track your progress
+      </h1>
     </div>
   )
 }

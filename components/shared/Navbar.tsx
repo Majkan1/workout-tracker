@@ -9,7 +9,7 @@ export default function Navbar() {
     <nav className='flex h-16 items-center justify-between gap-4 px-4'>
       <div className='flex items-center gap-6'>
         <Image src={Logo} alt="Logo of workout tracker" height={50} width={50} />
-        <p>Workout tracker</p>
+        <p id="Workout-tracker">Workout tracker</p>
         <p id="About-us">About us</p>
         <p id="EXERCISE">Exercises</p>
         <p id="HISTORY">History</p>

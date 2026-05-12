@@ -28,19 +28,32 @@ export default async function LandingPage(){
       <h2 className="flex items-center justify-center m-4 text-6xl font-bold">
         Track your progress
       </h2>
-      <div className="mx-auto flex max-w-3xl flex-col items-center justify-center px-4 text-center bg-indigo-50 rounded-2xl">
+
+      <div>
+        
+      </div>
+
+      <div className=" mx-auto max-w-2xl flex  flex-col justify-center">
         <h2 className="text-3xl font-bold">FAQ</h2>
-        <h6 className="text-2xl">What is a workout tracker ?</h6>
-        <p className="text-xl">A workout tracker is a tool that helps you log, organize, and review your training sessions.
+        <div className="mx-auto flex flex-col bg-indigo-50 rounded-2xl p-2 my-3.5">
+          <h6 className="text-2xl font-bold">What is a workout tracker ?</h6>
+          <p className="text-xl">A workout tracker is a tool that helps you log, organize, and review your training sessions.
           Instead of trying to remember what you lifted last Tuesday, every session is saved — exercises, sets, reps
            — so you can focus on making progress rather than tracking it mentally.</p>
-        <h6 className="text-2xl">Is it free?</h6>
+        </div>
+        <div className="mx-auto flex flex-col bg-indigo-50 rounded-2xl p-2 my-3.5">
+            <h6 className="text-2xl font-bold">Is it free?</h6>
             <p className="text-xl">Yes, completely free. Create an account and start logging your workouts in under a minute.</p>
-            <h6 className="text-2xl">What features are coming?</h6>
-            <p className="text-xl">We are working on: exercise history charts so you can see strength progress over time, personal records tracking,
-            and a workout template system so you can reuse your favourite sessions without rebuilding them each time.</p>
-            <h6 className="text-2xl">Do I need an account?</h6>
-            <p className="text-xl">Yes — your workouts are saved to your account so you can access them from any device.</p>
+        </div>
+        <div className="mx-auto flex flex-col bg-indigo-50 rounded-2xl p-2 my-3.5">
+          <h6 className="text-2xl font-bold">What features are coming?</h6>
+          <p className="text-xl">We are working on: exercise history charts so you can see strength progress over time, personal records tracking,
+          and a workout template system so you can reuse your favourite sessions without rebuilding them each time.</p>
+        </div>
+        <div className="mx-auto flex flex-col bg-indigo-50 rounded-2xl p-2 my-3.5">
+          <h6 className="text-2xl font-bold">Do I need an account?</h6>
+        <p className="text-xl">Yes — your workouts are saved to your account so you can access them from any device.</p>
+        </div>
       </div>
     </div>
   )

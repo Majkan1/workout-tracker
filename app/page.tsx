@@ -26,6 +26,9 @@ export default async function LandingPage(){
           <h1 className="text-6xl font-bold text-white sm:text-8xl">
             Never give up
           </h1>
+          <h2 className="text-5xl font-bold text-white">
+            Log your workouts
+          </h2>
           <Button asChild size="lg" className="px-8 py-6 text-lg">
             <Link href="/auth/sign-up">Get started</Link>
           </Button>

@@ -7,34 +7,35 @@ export const dynamic = "force-dynamic";
 
 export default async function LandingPage(){
   const { userId } = await auth();
-
   if (userId) {
     redirect("/dashboard");
   }
 
   return(
     <div>
-      <div className="relative h-185 w-full">
+      <div className="relative h-[72svh] min-h-136 w-full overflow-hidden sm:h-[82vh] sm:min-h-168">
         <Image
           src="/gym-picture.avif"
           alt="gym image"
           fill
+          priority
           sizes="100vw"
-          className="object-cover"
+          quality={85}
+          className="object-cover object-center"
         />
-        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-6 px-4 text-center">
-          <h1 className="text-6xl font-bold text-white sm:text-8xl">
+        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-4 bg-black/25 px-4 text-center sm:gap-6">
+          <h1 className="max-w-4xl text-4xl font-bold leading-tight text-white sm:text-6xl lg:text-8xl">
             Never give up
           </h1>
-          <h2 className="text-5xl font-bold text-white">
+          <h2 className="max-w-3xl text-2xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
             Log your workouts
           </h2>
-          <Button asChild size="lg" className="px-8 py-6 text-lg">
+          <Button asChild size="lg" className="px-6 py-5 text-base sm:px-8 sm:py-6 sm:text-lg">
             <Link href="/auth/sign-up">Get started</Link>
           </Button>
         </div>
       </div>
-      <h2 className="flex items-center justify-center m-4 text-6xl font-bold">
+      <h2 className="m-4 flex items-center justify-center text-3xl font-bold sm:text-5xl lg:text-6xl">
         Track your progress
       </h2>
 
@@ -93,26 +94,54 @@ export default async function LandingPage(){
         </div>
       </div>
 
-      <div className=" mx-auto max-w-2xl flex  flex-col justify-center">
-        <h2 className="text-3xl font-bold">FAQ</h2>
-        <div className="mx-auto my-3.5 flex flex-col rounded-2xl bg-indigo-50 p-2">
-          <h6 className="text-2xl font-bold">What is a workout tracker ?</h6>
-          <p className="text-xl">A workout tracker is a tool that helps you log, organize, and review your training sessions.
-          Instead of trying to remember what you lifted last Tuesday, every session is saved — exercises, sets, reps
-           — so you can focus on making progress rather than tracking it mentally.</p>
+      <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6">
+        <div className="mb-6">
+          <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">FAQ</h2>
+          <p className="mt-2 max-w-2xl text-sm text-slate-600 sm:text-base">
+            Quick answers to the most common questions about the tracker.
+          </p>
         </div>
-        <div className="mx-auto my-3.5 flex flex-col rounded-2xl bg-indigo-50 p-2">
-            <h6 className="text-2xl font-bold">Is it free?</h6>
-            <p className="text-xl">Yes, completely free. Create an account and start logging your workouts in under a minute.</p>
-        </div>
-        <div className="mx-auto my-3.5 flex flex-col rounded-2xl bg-indigo-50 p-2">
-          <h6 className="text-2xl font-bold">What features are coming?</h6>
-          <p className="text-xl">We are working on: exercise history charts so you can see strength progress over time, personal records tracking,
-          and a workout template system so you can reuse your favourite sessions without rebuilding them each time.</p>
-        </div>
-        <div className="mx-auto my-3.5 flex flex-col rounded-2xl bg-indigo-50 p-2">
-          <h6 className="text-2xl font-bold">Do I need an account?</h6>
-        <p className="text-xl">Yes — your workouts are saved to your account so you can access them from any device.</p>
+
+        <div className="space-y-4">
+          <details className="group rounded-2xl border border-slate-200 bg-white px-4 py-4 shadow-sm transition-colors open:bg-indigo-50/60 sm:px-5 sm:py-4">
+            <summary className="flex cursor-pointer list-none flex-col items-start justify-between gap-3 text-left text-lg font-semibold text-slate-900 sm:flex-row sm:items-center sm:gap-4 sm:text-xl">
+              <span className="pr-8 sm:pr-0">What is a workout tracker?</span>
+              <span className="ml-auto -mt-8 text-2xl text-slate-500 transition-transform group-open:rotate-180 sm:mt-0">⌄</span>
+            </summary>
+            <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-700 sm:mt-4 sm:text-base sm:leading-7">
+              A workout tracker is a tool that helps you log, organize, and review your training sessions. Instead of trying to remember what you lifted last Tuesday, every session is saved - exercises, sets, reps - so you can focus on making progress rather than tracking it mentally.
+            </p>
+          </details>
+
+          <details className="group rounded-2xl border border-slate-200 bg-white px-4 py-4 shadow-sm transition-colors open:bg-indigo-50/60 sm:px-5 sm:py-4">
+            <summary className="flex cursor-pointer list-none flex-col items-start justify-between gap-3 text-left text-lg font-semibold text-slate-900 sm:flex-row sm:items-center sm:gap-4 sm:text-xl">
+              <span className="pr-8 sm:pr-0">Is it free?</span>
+              <span className="ml-auto -mt-8 text-2xl text-slate-500 transition-transform group-open:rotate-180 sm:mt-0">⌄</span>
+            </summary>
+            <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-700 sm:mt-4 sm:text-base sm:leading-7">
+              Yes, completely free. Create an account and start logging your workouts in under a minute.
+            </p>
+          </details>
+
+          <details className="group rounded-2xl border border-slate-200 bg-white px-4 py-4 shadow-sm transition-colors open:bg-indigo-50/60 sm:px-5 sm:py-4">
+            <summary className="flex cursor-pointer list-none flex-col items-start justify-between gap-3 text-left text-lg font-semibold text-slate-900 sm:flex-row sm:items-center sm:gap-4 sm:text-xl">
+              <span className="pr-8 sm:pr-0">What features are coming?</span>
+              <span className="ml-auto -mt-8 text-2xl text-slate-500 transition-transform group-open:rotate-180 sm:mt-0">⌄</span>
+            </summary>
+            <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-700 sm:mt-4 sm:text-base sm:leading-7">
+              We are working on exercise history charts so you can see strength progress over time, personal records tracking, and a workout template system so you can reuse your favourite sessions without rebuilding them each time.
+            </p>
+          </details>
+
+          <details className="group rounded-2xl border border-slate-200 bg-white px-4 py-4 shadow-sm transition-colors open:bg-indigo-50/60 sm:px-5 sm:py-4">
+            <summary className="flex cursor-pointer list-none flex-col items-start justify-between gap-3 text-left text-lg font-semibold text-slate-900 sm:flex-row sm:items-center sm:gap-4 sm:text-xl">
+              <span className="pr-8 sm:pr-0">Do I need an account?</span>
+              <span className="ml-auto -mt-8 text-2xl text-slate-500 transition-transform group-open:rotate-180 sm:mt-0">⌄</span>
+            </summary>
+            <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-700 sm:mt-4 sm:text-base sm:leading-7">
+              Yes - your workouts are saved to your account so you can access them from any device.
+            </p>
+          </details>
         </div>
       </div>
     </div>

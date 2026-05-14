@@ -38,15 +38,15 @@ export default async function LandingPage(){
         Track your progress
       </h2>
 
-      <div className="flex flex-col justify-center mx-auto">
-        <h2 className="text-4xl">
-          How does it work
-        </h2>
-        <li>
-          <ul className="text-xl">Create account</ul> 
-          <ul className="text-xl">Log your first workout</ul>
-          <ul className="text-xl">Track your progress</ul>
-        </li> 
+      <div className="mx-auto my-8 flex max-w-2xl flex-col items-center text-center">
+        <h2 className="text-4xl font-bold">How does it work</h2>
+        <div className="mt-6 flex flex-col items-center gap-2">
+          <p className="text-xl">Create account</p>
+          <span aria-hidden="true" className="text-2xl">↓</span>
+          <p className="text-xl">Log your first workout</p>
+          <span aria-hidden="true" className="text-2xl">↓</span>
+          <p className="text-xl">Track your progress</p>
+        </div>
       </div>
 
       <div className=" mx-auto max-w-2xl flex  flex-col justify-center">

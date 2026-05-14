@@ -49,14 +49,14 @@ export default async function LandingPage(){
         </div>
       </div>
 
-      <div className="mx-auto my-12 w-full max-w-5xl px-4">
+      <div className="mx-auto my-12 w-full max-w-3xl px-4">
         <div className="rounded-3xl border border-slate-200 bg-linear-to-br from-slate-50 via-white to-emerald-50 p-6 shadow-sm sm:p-10">
           <div className="mb-8">
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-700">Opinions</p>
               <h2 className="mt-2 text-3xl font-bold text-slate-900 sm:text-4xl">What athletes say</h2>
               <p className="mt-2 max-w-xl text-slate-600">
-                Real feedback from people using the tracker every week to stay consistent and improve workouts.
+                Feedback from our users who train consistently and log every workout.
               </p>
             </div>
           </div>
@@ -65,24 +65,27 @@ export default async function LandingPage(){
             <article className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
               <p className="text-sm font-semibold text-emerald-700">5/5 rating</p>
               <p className="mt-3 text-slate-700">
-                The clean layout helps me log workouts in under a minute. I finally stay consistent week after week.
+                The clean layout helps me log workouts in under a minute. I finally stay consistent week after week. I can review all my sessions before training and plan better sets.
               </p>
+              <p className="mt-2 text-xs font-medium uppercase tracking-wide text-slate-500">Using app for 8 months</p>
               <p className="mt-5 text-sm font-semibold text-slate-900">Martin K. - Strength Athlete</p>
             </article>
 
             <article className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
               <p className="text-sm font-semibold text-emerald-700">5/5 rating</p>
               <p className="mt-3 text-slate-700">
-                Seeing all sessions in one place makes progress obvious. I can compare what I did last month instantly.
+                Seeing all sessions in one place makes progress obvious. I can compare what I did last month instantly. The structure is clear enough that I never miss important details.
               </p>
+              <p className="mt-2 text-xs font-medium uppercase tracking-wide text-slate-500">Using app for 6 months</p>
               <p className="mt-5 text-sm font-semibold text-slate-900">Nina R. - Cross Training</p>
             </article>
 
             <article className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
               <p className="text-sm font-semibold text-emerald-700">4.8/5 rating</p>
               <p className="mt-3 text-slate-700">
-                Simple to use, fast on mobile, and perfect before and after training. It removed all guesswork from my routine.
+                Simple to use, fast on mobile, and perfect before and after training. It removed all guesswork from my routine. I open it between sets and update exercises in seconds.
               </p>
+              <p className="mt-2 text-xs font-medium uppercase tracking-wide text-slate-500">Using app for 1 year</p>
               <p className="mt-5 text-sm font-semibold text-slate-900">Daria P. - Fitness Coach</p>
             </article>
 

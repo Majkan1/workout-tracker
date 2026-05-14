@@ -50,6 +50,10 @@ export default async function LandingPage(){
         </div>
       </div>
 
+      <div className="mx-auto my-10 w-full max-w-4xl px-4 text-center">
+        <h2 className="text-5xl font-bold">How the page works</h2>
+      </div>
+
       <div className="mx-auto my-12 w-full max-w-3xl px-4">
         <div className="rounded-3xl border border-slate-200 bg-linear-to-br from-slate-50 via-white to-emerald-50 p-6 shadow-sm sm:p-10">
           <div className="mb-8">

@@ -6,14 +6,14 @@ type Workout = {
   exercises : {id:string } []
 }
 
-export default function WorkoutCard({ workout}:{workout:Workout}){
+export function WorkoutCard({ workout}:{workout:Workout}){
   return(
     <div>
-      <p>This is user  Id {workout.id}</p>
-      <p>There are an exercises {workout.exercises.length}</p>
-      <p>This is a name of exercises {workout.name}</p>
-      <p>This is a date of added exercises {workout.createdAt.toLocaleDateString("pl-PL")}</p>
-      <Link href="../app/dashboard/workouts/new/page.tsx">Create new workout</Link>
+      <p>{workout.id}</p>
+      <p>{workout.exercises.length}</p>
+      <p>{workout.name}</p>
+      <p>{workout.createdAt.toLocaleDateString("pl-PL")}</p>
+      <Link href={`/dashboard/workouts/${workout.id}`}>Create new workout</Link>
     </div>
   )
 }

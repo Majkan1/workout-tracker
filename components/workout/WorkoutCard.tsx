@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { Workout } from "@/app/types"
 
 export function WorkoutCard({ workout}:{workout:Workout}){
   return(

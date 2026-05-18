@@ -4,7 +4,7 @@ type Workout = {
   id : string 
   name : string 
   createdAt : Date
-  exercises : {id:string } []
+  exercises: {id:string } []
 }
 
 export function WorkoutList({workout}:{workout:Workout []}){

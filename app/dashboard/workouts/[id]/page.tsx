@@ -27,7 +27,6 @@ export default async function WorkoutsId({ params }: PageProps) {
       <p>{item.name}</p>
       <p>{item.sets}</p>
       <p>{item.reps}</p>
-      <p>{item.weight}</p>
       </div>
       ))
     }

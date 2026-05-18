@@ -1,20 +1,28 @@
+import { WorkoutList } from "@/components/workout/WorkoutList";
+import {getPrisma} from "@/lib/prisma"
+import {auth} from "@clerk/nextjs/server"
+const db = getPrisma();
+const userId = await auth();
 
 type Workout = {
   id: string
   name: string
   createdAt: Date
-  exercises: { id: string }[]
+  exercises: Exercise []
 }
 
-export default async function DashboardPage() {
-  const userId = "user-123" 
-  const session = { user: { id: userId, name: "User" } } 
+export default async function Dashboard(){
 
-  const workouts: Workout[] = []
-  const totalWorkouts = 0
+  await db.workout.findMany({
+    where:{
+      userId? = res
+    }
+  }
+  )
 
-  return (
-    <main className="max-w-4xl mx-auto px-6 py-10">
-    </main>
+  return(
+    <div>
+      <WorkoutList res = {workout}/>
+    </div>
   )
 }

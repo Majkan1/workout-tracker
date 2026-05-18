@@ -25,6 +25,7 @@ model Exercise {
   name      String
   sets      Int
   reps      Int
+  weight    Float
   workoutId String
   workout   Workout  @relation(fields: [workoutId], references: [id])
 } 

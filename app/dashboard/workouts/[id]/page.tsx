@@ -18,6 +18,8 @@ export default async function WorkoutsId({params}:PageProps){
   if (!workout) notFound()
   return(
     <div>
+      <h1>{workout.name}</h1>
+      <p>{workout.createdAt.toLocaleDateString("pl-PL")}</p>
       {workout.exercises.length===0 ? 
       "No exercises" :
       workout.exercises.map((item)=>(
@@ -25,15 +27,12 @@ export default async function WorkoutsId({params}:PageProps){
       <p>{item.name}</p>
       <p>{item.sets}</p>
       <p>{item.reps}</p>
-      <p>{item.weight}</p>
       </div>
       ))
     }
-      <button>
-        <Link href="/dashboard/workouts">
-          Come back
-        </Link>
-        </button>
+      <Link href="/dashboard/workouts">
+        Come back
+      </Link>
     </div>
   )
 }

@@ -28,7 +28,7 @@ export default async function Dashboard(){
       userId
     },
     include:
-    {
+    { 
       exercises:true
     }
   }

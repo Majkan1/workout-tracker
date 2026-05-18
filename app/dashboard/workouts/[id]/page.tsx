@@ -20,6 +20,8 @@ export default async function WorkoutsId({ params }: PageProps) {
 
   return (
     <div>
+      <p>{workout.name}</p>
+      <p>{workout.createdAt.toLocaleDateString("pl-PL")}</p>
       {workout.exercises.length===0 ? 
       "No exercises" :
       workout.exercises.map((item)=>(
@@ -30,11 +32,9 @@ export default async function WorkoutsId({ params }: PageProps) {
       </div>
       ))
     }
-      <button>
-        <Link href="/dashboard/workouts">
-          Come back
-        </Link>
-        </button>
+      <Link href="/dashboard/workouts">
+        Come back
+      </Link>
     </div>
   );
 }

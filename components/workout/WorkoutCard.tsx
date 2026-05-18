@@ -1,10 +1,4 @@
 import Link from "next/link"
-type Workout = {
-  id : string 
-  name : string 
-  createdAt : Date
-  exercises : {id:string } []
-}
 
 export function WorkoutCard({ workout}:{workout:Workout}){
   return(

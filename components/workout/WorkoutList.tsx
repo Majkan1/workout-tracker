@@ -1,11 +1,5 @@
 import { WorkoutCard } from "./WorkoutCard"
-
-type Workout = {
-  id : string 
-  name : string 
-  createdAt : Date
-  exercises: {id:string } []
-}
+import { Workout } from "@/app/types"
 
 export function WorkoutList({workout}:{workout:Workout []}){
   return(

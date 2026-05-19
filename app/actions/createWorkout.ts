@@ -11,7 +11,7 @@ export async function createWorkout(name:string){
     await getPrisma().workout.create({
         data:{
             name,
-            userId
+            userId,
         }
     })
     revalidatePath("/dashboard");

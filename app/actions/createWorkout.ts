@@ -4,7 +4,7 @@ import {getPrisma} from "@/lib/prisma"
 import { revalidatePath } from "next/cache"
 import {auth} from "@clerk/nextjs/server"
 
-export async function createWorkout(name:string){
+export async function createWorkout(name:string,repsNumber:number,setsNumber:number,weightNumber:number){
     const {userId} = await auth()
 
     if (!userId) throw new Error("Unauthorized")
@@ -12,6 +12,9 @@ export async function createWorkout(name:string){
         data:{
             name,
             userId,
+            repsNumber,
+            setsNumber,
+            weightNumber
         }
     })
     revalidatePath("/dashboard");

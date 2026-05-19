@@ -2,7 +2,6 @@ import { WorkoutList } from "@/components/workout/WorkoutList";
 import {getPrisma} from "@/lib/prisma"
 import {auth} from "@clerk/nextjs/server"
 
-
 export default async function Dashboard(){
 
   const db = getPrisma();

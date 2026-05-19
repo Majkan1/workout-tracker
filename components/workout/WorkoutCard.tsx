@@ -3,7 +3,7 @@ import { Workout } from "@/app/types"
 
 export function WorkoutCard({ workout}:{workout:Workout}){
   return(
-    <div>
+    <div className="p-0.5 font-bold text-xl">
       <Link href={`/dashboard/workouts/${workout.id}`}>
       <p>{workout.exercises.length}</p>
       <p>{workout.name}</p>

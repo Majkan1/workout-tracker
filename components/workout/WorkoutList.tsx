@@ -11,7 +11,7 @@ export function WorkoutList({workout}:{workout:Workout []}){
       workout.map((item)=>(
         <WorkoutCard key={item.id} workout={item}/>
       ))}
-      <Link href="/dashboard/workouts" className="text-xl my-4">
+      <Link href="@/dashboard/workouts/new" className="text-xl my-4">
         +Add new trainings
       </Link>
     </div>

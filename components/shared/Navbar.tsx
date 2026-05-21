@@ -9,8 +9,8 @@ export default function Navbar() {
     <nav className='flex h-16 items-center justify-between gap-4 px-4'>
       <div className='flex items-center gap-6'>
         <Image src={Logo} alt="Logo of workout tracker" height={50} width={50} />
-        <Link href="/app">Workout tracker</Link>
-        <Link href="">About us</Link>
+        <Link href="/">Workout tracker</Link>
+        <Link href="/about">About us</Link>
       </div>
       <div className='flex items-center gap-4'>
         <Show when="signed-out">

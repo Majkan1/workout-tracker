@@ -2,6 +2,8 @@ import { WorkoutList } from "@/components/workout/WorkoutList";
 import {getPrisma} from "@/lib/prisma"
 import {auth} from "@clerk/nextjs/server"
 import { WelcomeHeader } from "./_components/WelcomeHeader";
+import { StatsGrid } from "./_components/StatsGrid";
+import { RecentWorkouts } from "./_components/RecentWorkouts";
 
 export default async function Dashboard(){
 
@@ -23,6 +25,8 @@ export default async function Dashboard(){
   return(
     <div>
       <WelcomeHeader/>
+      <StatsGrid workout={workout}/>
+      <RecentWorkouts workout={workout}/>
       <WorkoutList workout = {workout}/>
     </div>
   )

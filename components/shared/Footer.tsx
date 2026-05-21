@@ -4,9 +4,9 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return ( 
-    <footer className="mt-5 flex justify-center border-t border-pink-100 bg-pink-50 py-6">
+    <footer className="mt-4 flex justify-center border-t border-pink-100 bg-pink-50 py-4">
       <div className="flex w-fit flex-col items-center gap-1 text-center">
-        <Button className="px-6 py-6 text-lg w-34">
+        <Button className="px-5 py-5 text-lg w-34">
           <Link href="/auth/sign-up">Get started</Link>
         </Button>
         <p className="text-[17px]">© {year} workout tracker</p>

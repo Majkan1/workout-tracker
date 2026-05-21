@@ -1,3 +1,8 @@
 export function WelcomeHeader({ name }: { name?: string }) {
-  return <h1>Hej, {name ?? "tam"} 👋</h1>
+  return (
+    <div>
+      <h1 className="mx-auto text-2xl text-center mb-3">Hello, {name ?? "there"} 👋</h1>
+      </div>  
+  ) 
+  
 }

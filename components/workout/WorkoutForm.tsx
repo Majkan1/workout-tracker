@@ -1,4 +1,5 @@
 "use client"
+import Link from "next/link"
 import { createWorkout } from "@/app/actions/createWorkout"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
@@ -12,6 +13,16 @@ export default function Form(){
 
   return(
     <div className="mx-auto max-w-lg text-center">
+
+      <Link href="/dashboard" className="rounded-lg bg-amber-300 p-2.5
+       text-xl font-medium hover:bg-amber-500 transition-colors">
+        Come back
+      </Link>
+
+      <h1 className="mb-2 mt-3 text-2xl font-semibold text-slate-900 ">New training</h1>
+      <p className="mb-4 text-xl text-slate-500">
+        Write the  exercise
+      </p>
       <form
         className="flex flex-col gap-2 w-full mx-auto text-xl
         items-center"
@@ -53,8 +64,8 @@ export default function Form(){
             onChange={(e)=>{setWeight(e.target.value)}}
           className="max-w-lg rounded-2xl w-1/2  border-amber-950 border-2"/>
           
-          <button type="submit">
-            Add
+          <button type="submit" className="rounded-lg mt-3 bg-emerald-700 p-2.5 text-xl font-medium text-white hover:bg-emerald-800 transition-colors">
+            Add exercise
           </button>
           
       </form>

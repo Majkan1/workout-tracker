@@ -3,6 +3,7 @@ import Link from "next/link"
 import { createWorkout } from "@/app/actions/createWorkout"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
+import { deleteWorkout } from "@/app/actions/deleteWorkout"
 
 export default function Form(){
   const [text,setText] = useState("");
@@ -36,6 +37,7 @@ export default function Form(){
           if(!setsNumber) return
           if(!weightNumber) return
           await createWorkout(text,repsNumber,setsNumber,weightNumber);
+          await deleteWorkout(text)
           setText("");
           setReps("");
           setSets("");

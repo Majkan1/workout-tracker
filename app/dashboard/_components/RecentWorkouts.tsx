@@ -2,7 +2,7 @@ import { Workout } from "@/app/types"
 import Link from "next/link"
 export function RecentWorkouts({workout}:{workout:Workout []}){
   return(
-    <div className="mx-auto text-w-2xl text-center justify-center items-center">
+    <div className="mx-auto max-w-2xl text-center justify-center items-center">
       <p className="font-semibold uppercase tracking-widest text-slate-400">Latest Trainings</p>
       <div>
         <div className="flex gap-3 justify-center">
@@ -16,7 +16,7 @@ export function RecentWorkouts({workout}:{workout:Workout []}){
         </div>
         <div>
           <div>
-            <p className="text-lg">{workout[1].name}</p>
+            <p className="text-lg">{workout[1]?.name}</p>
             <p className="text-lg">{workout[1]?.createdAt?.toLocaleDateString()}</p>
           </div>
           <div>

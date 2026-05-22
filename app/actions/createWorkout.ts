@@ -12,14 +12,6 @@ export async function createWorkout(name:string,repsNumber:number,setsNumber:num
         data:{
             name,
             userId,
-            exercises: {
-            create: {
-                name, 
-                reps: repsNumber,
-                sets: setsNumber,
-                weight: weightNumber
-            }
-            }
         }
     })
     revalidatePath("/dashboard");

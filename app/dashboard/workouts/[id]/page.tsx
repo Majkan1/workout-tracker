@@ -7,10 +7,9 @@ import Link from "next/link";
 export default async function WorkoutsId({ params }: PageProps) {
   const { id } = await params;
   const { userId } = await auth();
+  if (!userId) return null;
+
   const db = getPrisma();
-
-  if (!userId) return;
-
   const workout = await db.workout.findUnique({
     where: { id, userId },
     include: { exercises: true },
@@ -18,23 +17,29 @@ export default async function WorkoutsId({ params }: PageProps) {
 
   if (!workout) notFound();
 
+  const date = new Date(workout.createdAt).toLocaleDateString("pl-PL");
+
   return (
-    <div>
-      <p>{workout.name}</p>
-      <p>{workout.createdAt.toLocaleDateString("pl-PL")}</p>
-      {workout.exercises.length===0 ? 
-      "No exercises" :
-      workout.exercises.map((item)=>(
-      <div key={item.id}>
-      <p>{item.name}</p>
-      <p>{item.sets}</p>
-      <p>{item.reps}</p>
+    <div className="mx-auto max-w-2xl p-4 text-center text-lg">
+      <h2 className="text-2xl font-medium">{workout.name}</h2>
+      <p className="text-sm text-gray-500">{date}</p>
+
+      {workout.exercises.length === 0 ? (
+        <p className="mt-4">No exercises</p>
+      ) : (
+        <div className="mt-4 space-y-3">
+          {workout.exercises.map((ex) => (
+            <div key={ex.id} className="border rounded p-3 text-left">
+              <div className="font-semibold">{ex.name}</div>
+              <div className="text-sm text-gray-600">Sets: {ex.sets} • Reps: {ex.reps}{ex.weight ? ` • ${ex.weight}kg` : ''}</div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      <div className="mt-6">
+        <Link href="/dashboard/workouts">Back</Link>
       </div>
-      ))
-    }
-      <Link href="/dashboard/workouts">
-        Come back
-      </Link>
     </div>
   );
 }

@@ -3,6 +3,7 @@ import { auth } from "@clerk/nextjs/server";
 import { getPrisma } from "@/lib/prisma";
 import { PageProps } from "@/app/types";
 import Link from "next/link";
+import ExerciseForm from "@/components/workout/ExerciseForm";
 
 export default async function WorkoutsId({ params }: PageProps) {
   const { id } = await params;
@@ -34,6 +35,8 @@ export default async function WorkoutsId({ params }: PageProps) {
           ))}
         </div>
       )}
+
+      <ExerciseForm/>
 
       <div className="mt-8">
         <Link href="/dashboard/workouts" className="text-lg">Back</Link>

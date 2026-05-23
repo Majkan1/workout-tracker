@@ -1,7 +1,9 @@
+"use server"
 import {auth} from "@clerk/nextjs/server"
 import { getPrisma } from "@/lib/prisma";
+import { revalidatePath } from "next/cache";
 
-export async function Exercise(name:string,repsNumber:number,setsNumber:number,weightNumber:number,workoutId:string){
+export async function createExercise(name:string,repsNumber:number,setsNumber:number,weightNumber:number,workoutId:string){
   const {userId} = await auth()
 
   if(!userId)  throw new Error("Unauthorized");
@@ -15,5 +17,5 @@ export async function Exercise(name:string,repsNumber:number,setsNumber:number,w
             }
     }
 )
-
+revalidatePath("/dashboard")
 }

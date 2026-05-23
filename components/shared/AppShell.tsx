@@ -15,7 +15,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   return (
     <ClerkProvider signInUrl="/auth/sign-in" signUpUrl="/auth/sign-up">
       <Navbar />
-      <main className='glex-grow'>
+      <main className='flex grow'>
         {children}
       </main>
       {showFooter && <Footer />}

@@ -7,7 +7,7 @@ import Link from "next/link";
 export default async function WorkoutsId({ params }: PageProps) {
   const { id } = await params;
   const { userId } = await auth();
-  if (!userId) return;
+  if (!userId) return null;
   const db = getPrisma();
   const workout = await db.workout.findUnique({
     where: { id, userId },
@@ -16,21 +16,28 @@ export default async function WorkoutsId({ params }: PageProps) {
 
   if (!workout) notFound();
   return (
-    <div className="mx-auto max-w-2xl text-center text-xl">
-      {workout.exercises.length === 0 ? 
-  "No exercises" :
-  workout.exercises.map((item) => (
-  <div key={item.id}>
-  <p className="text-2xl">{item.name}</p>
-  <p className="text-2xl">{workout.createdAt.toLocaleDateString("pl-PL")}</p>
-  <p className="text-2xl">{item.sets}</p>
-  <p className="text-2xl">{item.reps}</p>
-  </div>
-  ))
-    }
-      <Link href="/dashboard/workouts">
-        Come back
-      </Link>
+    <div className="mx-auto max-w-2xl py-12 px-4 text-center">
+      <header className="mb-6">
+        <h1 className="text-4xl font-serif">{workout.name}</h1>
+        <p className="text-sm text-gray-500 mt-2">{new Date(workout.createdAt).toLocaleDateString("pl-PL")}</p>
+      </header>
+
+      {workout.exercises.length === 0 ? (
+        <p className="text-lg text-gray-600">No exercises</p>
+      ) : (
+        <div className="rounded-lg border p-4 text-left bg-white shadow-sm">
+          {workout.exercises.map((item) => (
+            <div key={item.id} className="mb-4">
+              <p className="font-semibold text-lg">{item.name}</p>
+              <p className="text-sm text-gray-600">Sets: {item.sets} • Reps: {item.reps} • {item.weight ?? "-"}kg</p>
+            </div>
+          ))}
+        </div>
+      )}
+
+      <div className="mt-8">
+        <Link href="/dashboard/workouts" className="text-lg">Back</Link>
+      </div>
     </div>
   );
 }

@@ -36,7 +36,7 @@ export default function Form(){
           if(!repsNumber) return
           if(!setsNumber) return
           if(!weightNumber) return
-          await createWorkout(text,repsNumber,setsNumber,weightNumber);
+          await createWorkout(text);
           await deleteWorkout(text)
           setText("");
           setReps("");

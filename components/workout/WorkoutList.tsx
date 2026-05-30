@@ -1,3 +1,4 @@
+import { deleteWorkout } from "@/app/actions/deleteWorkout"
 import { Workout } from "@/app/types"
 import Link from "next/link"
 
@@ -21,10 +22,18 @@ export function WorkoutList({workout = []}:{workout?: Workout[]}){
       : 
         <div className="grid gap-5 sm:grid-cols-2">
           {workout.map((item) => (
-            <Link key={item.id} href={`/dashboard/workouts/${item.id}`} className="bg-amber-100 rounded-3xl p-5 text-center block">
-              <p className="text-2xl font-bold">{item.name}</p>
-              <p className="mb-4 text-lg">{item.createdAt.toLocaleDateString("pl-PL")}</p>
-            </Link>
+            <div key={item.id}>
+              <Link key={item.id} href={`/dashboard/workouts/${item.id}`} className="bg-amber-100 rounded-3xl p-5 text-center block">
+                <p className="text-2xl font-bold">{item.name}</p>
+                <p className="mb-4 text-lg">{item.createdAt.toLocaleDateString("pl-PL")}</p>
+              </Link>
+
+              <form action={deleteWorkout.bind(null,item.id)}>
+                <button type="submit" className="rounded-lg mt-3 bg-emerald-700 p-2.5 text-xl font-medium text-white hover:bg-emerald-800 transition-colors">
+                  Delete all workouts
+                </button>
+              </form>
+            </div>
           ))}
         </div>
       }

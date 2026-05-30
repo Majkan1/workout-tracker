@@ -30,7 +30,7 @@ export function WorkoutList({workout = []}:{workout?: Workout[]}){
 
               <form action={deleteWorkout.bind(null,item.id)}>
                 <button type="submit" className="rounded-lg mt-3 bg-emerald-700 p-2.5 text-xl font-medium text-white hover:bg-emerald-800 transition-colors">
-                  Delete all workouts
+                  Delete workout
                 </button>
               </form>
             </div>

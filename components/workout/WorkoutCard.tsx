@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { Workout } from "@/app/types"
+import { DeleteExercise } from "@/app/actions/deleteExercise"
 
 export function WorkoutCard({ workout}:{workout:Workout}){
   return(
@@ -16,6 +17,11 @@ export function WorkoutCard({ workout}:{workout:Workout}){
           </div>
         ))}
       </Link>
+      <form action={DeleteExercise.bind(null,workout.id)}>
+        <button type="submit">
+          Delete exercise
+        </button>
+      </form>
     </div>
   )
 }

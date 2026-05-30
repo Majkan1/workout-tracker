@@ -1,8 +1,7 @@
-import { WorkoutCard } from "./WorkoutCard"
 import { Workout } from "@/app/types"
 import Link from "next/link"
 
-export function WorkoutList({workout}:{workout:Workout []}){
+export function WorkoutList({workout = []}:{workout?: Workout[]}){
   return(
     <div className="mx-auto max-w-3xl">
       <div className="mb-8 flex items-center justify-between">
@@ -17,17 +16,15 @@ export function WorkoutList({workout}:{workout:Workout []}){
 
       {workout.length === 0 ? 
         <div className="bg-slate-100 p-10 rounded-3xl text-center">
-          <p className="text-xl font-medium">No exercises</p>
+          <p className="text-xl font-medium">No workouts</p>
         </div>
       : 
         <div className="grid gap-5 sm:grid-cols-2">
           {workout.map((item) => (
-            <div key={item.id} className="bg-amber-100 rounded-3xl p-5 text-center">
+            <Link key={item.id} href={`/dashboard/workouts/${item.id}`} className="bg-amber-100 rounded-3xl p-5 text-center block">
               <p className="text-2xl font-bold">{item.name}</p>
               <p className="mb-4 text-lg">{item.createdAt.toLocaleDateString("pl-PL")}</p>
-              
-              <WorkoutCard workout={item}/>
-            </div>
+            </Link>
           ))}
         </div>
       }

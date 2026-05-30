@@ -7,11 +7,18 @@ import {auth} from "@clerk/nextjs/server"
 export async function DeleteExercise(id:string){
     const {userId} = await auth();
     if(!userId) throw new Error("Unauthorized!")
-    await getPrisma().workout.delete({
-        where:{
-            id,
-            workout: {userId},
-        }
+
+    const exercise = await getPrisma().exercise.findUnique({
+        where:{ id },
+        include: { workout: true },
+        })
+
+    if (!exercise || exercise.workout.userId !== userId) {
+        throw new Error("Not found or unathorized")
+    }
+
+    await getPrisma().exercise.delete({
+        where:{ id },
     })
     revalidatePath("dashboard")
 }

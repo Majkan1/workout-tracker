@@ -1,7 +1,6 @@
 "use client"
 import Link from "next/link"
 import { createExercise } from "@/app/actions/exercise"
-import { DeleteExercise } from "@/app/actions/deleteExercise"
 import { useParams, useRouter } from "next/navigation"
 import { useState } from "react" 
 export default function ExerciseForm(){

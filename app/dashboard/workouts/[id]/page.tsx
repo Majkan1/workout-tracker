@@ -4,6 +4,7 @@ import { getPrisma } from "@/lib/prisma";
 import { PageProps } from "@/app/types";
 import Link from "next/link";
 import ExerciseForm from "@/components/workout/ExerciseForm";
+import { DeleteExercise } from "@/app/actions/deleteExercise";
 
 export default async function WorkoutsId({ params }: PageProps) {
   const { id } = await params;
@@ -31,6 +32,12 @@ export default async function WorkoutsId({ params }: PageProps) {
             <div key={item.id} className="mb-4">
               <p className="font-semibold text-lg">{item.name}</p>
               <p className="text-sm text-gray-600">Sets: {item.sets} • Reps: {item.reps} • {item.weight ?? "-"}kg</p>
+            
+              <form action={DeleteExercise.bind(null, item.id)}>
+                <button type="submit">
+                  Delete exercise
+                </button>
+              </form>
             </div>
           ))}
         </div>

@@ -14,11 +14,13 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   return (
     <ClerkProvider signInUrl="/auth/sign-in" signUpUrl="/auth/sign-up">
-      <Navbar />
-      <main className='flex grow'>
-        {children}
-      </main>
-      {showFooter && <Footer />}
+      <div className="flex min-h-screen w-full flex-col">
+        <Navbar />
+        <main className='w-full flex-1'>
+          {children}
+        </main>
+        {showFooter && <Footer />}
+      </div>
     </ClerkProvider>
   )
 }

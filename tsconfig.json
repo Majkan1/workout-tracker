@@ -18,6 +18,7 @@
         "name": "next"
       }
     ],
+    "types": ["vitest/globals", "node","@testing-library/jest-dom"],
     "paths": {
       "@/*": ["./*"]
     }

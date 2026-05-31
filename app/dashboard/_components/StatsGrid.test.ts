@@ -13,10 +13,12 @@ describe("Stats Grid",()=>{
         expect(workouts.length).toBe(2)
     })
 
-    test("Latest workout",()=>{
-        const workouts: { name: string; exercises: unknown[] }[] = [
-            { name: "push day", exercises: [] }
+    test("Sum of the workout",()=>{
+        const workouts = [
+            {exercise: [{},{},{}]},
+            {exercise:[{},{}]}
         ]
-        expect(workouts[0].name).toBe("push day")
+        const total = workouts.reduce((acc,cur)=>acc + cur.exercise.length,0)
+        expect(total).toBe(5)
     })
 })

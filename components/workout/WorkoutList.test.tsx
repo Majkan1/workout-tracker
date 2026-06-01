@@ -5,7 +5,6 @@ import { WorkoutList } from "./WorkoutList";
 
 vi.mock("@/app/actions/deleteWorkout", () => ({ deleteWorkout: vi.fn() }));
 
-
     const mockWorkout = [{ id: "1", name: "Workout 1", createdAt: new Date(),
         exercises: [{ name: "ola", reps: 10 ,id:"1",sets:10,weight:10}] }]
 
@@ -26,6 +25,10 @@ describe("WorkoutList",()=>{
     })
 
     test("render a link to proper add a next workout",()=>{
-        render(<WorkoutList workout={[]}/>)
+        render(<WorkoutList workout={mockWorkout}/>)
+        const addLink = screen.getByRole("link",{name:"/\+Add new workout/i"});
+        expect(addLink).toBeInTheDocument();
+        expect(addLink).toHaveAttribute("href","/dashboard/workouts/new")
+        expect(screen.getByText("Add workout")).toBeInTheDocuments()
     })
 })

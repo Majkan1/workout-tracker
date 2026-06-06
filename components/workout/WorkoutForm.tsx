@@ -3,48 +3,59 @@ import Link from "next/link"
 import { createWorkout } from "@/app/actions/createWorkout"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
+import { ArrowLeft } from "lucide-react"
 
-export default function Form(){
-  const [text,setText] = useState("");
-  const router = useRouter();
+export default function Form() {
+  const [text, setText] = useState("")
+  const router = useRouter()
 
-  return(
-    <div className="mx-auto max-w-lg text-center">
-
-      <Link href="/dashboard" className="rounded-lg bg-amber-300 p-2.5
-       text-xl font-medium hover:bg-amber-500 transition-colors">
-        Come back
+  return (
+    <div className="mx-auto max-w-md px-4 py-10 sm:px-6">
+      <Link
+        href="/dashboard"
+        className="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
+      >
+        <ArrowLeft size={16} /> Back to dashboard
       </Link>
 
-      <h1 className="mb-2 mt-3 text-2xl font-semibold text-slate-900 ">New training</h1>
-      <p className="mb-4 text-xl text-slate-500">
-        Write the  exercise
-      </p>
-      <form
-        className="flex flex-col gap-2 w-full mx-auto text-xl
-        items-center"
-        onSubmit={async (event) => {
-          event.preventDefault();
-          if(!text.trim()) return
-          await createWorkout(text);
-          setText("");
-          router.refresh();
-        }}
-      >
-          <label htmlFor="name">Workout:</label>
-          <input
-          className="max-w-lg rounded-2xl w-=11/12  border-amber-950 border-2"
-          placeholder="Write here workout name"
-          type="text"
-          value={text}
-          onChange={(e)=>{setText(e.target.value)}}
-          />
-          
-          <button type="submit" className="rounded-lg mt-3 bg-emerald-700 p-2.5 text-xl font-medium text-white hover:bg-emerald-800 transition-colors">
-            Add workout
+      <div className="mt-6 rounded-xl border border-border bg-card p-6">
+        <h1 className="text-xl font-semibold tracking-tight">New workout</h1>
+        <p className="mt-1 text-sm text-muted-foreground">
+          Give your workout a name to start logging exercises.
+        </p>
+
+        <form
+          className="mt-5 space-y-4"
+          onSubmit={async (event) => {
+            event.preventDefault()
+            if (!text.trim()) return
+            await createWorkout(text)
+            setText("")
+            router.refresh()
+          }}
+        >
+          <div>
+            <label htmlFor="name" className="mb-1.5 block text-sm font-medium">
+              Workout name
+            </label>
+            <input
+              id="name"
+              className="h-11 w-full rounded-lg border border-input bg-background px-3 text-sm outline-none transition-colors focus:border-ring focus:ring-2 focus:ring-ring/40"
+              placeholder="e.g. Push day"
+              type="text"
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="w-full cursor-pointer rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+          >
+            Create workout
           </button>
-          
-      </form>
+        </form>
+      </div>
     </div>
   )
 }

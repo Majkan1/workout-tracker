@@ -1,42 +1,64 @@
 import { deleteWorkout } from "@/app/actions/deleteWorkout"
 import { Workout } from "@/app/types"
 import Link from "next/link"
+import { Trash2 } from "lucide-react"
 
-export function WorkoutList({workout = []}:{workout?: Workout[]}){
-  return(
-    <div className="mx-auto max-w-3xl">
-      <div className="mb-8 flex items-center justify-between">
-        <h1 className="text-3xl">My Workouts</h1>
-        <Link 
-          href="/dashboard/workouts/new" 
-          className="rounded-xl bg-emerald-700 p-2 text-xl text-white hover:bg-emerald-800"
+export function WorkoutList({ workout = [] }: { workout?: Workout[] }) {
+  return (
+    <div className="mx-auto w-full max-w-3xl">
+      <div className="mb-8 flex items-center justify-between gap-4">
+        <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
+          My workouts
+        </h1>
+        <Link
+          href="/dashboard/workouts/new"
+          className="shrink-0 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
         >
           + Add new workout
         </Link>
       </div>
 
-      {workout.length === 0 ? 
-        <div className="bg-slate-100 p-10 rounded-3xl text-center">
-          <p className="text-xl font-medium">No workouts</p>
+      {workout.length === 0 ? (
+        <div className="rounded-xl border border-dashed border-border p-12 text-center">
+          <p className="font-medium">No workouts</p>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Create your first workout to get started.
+          </p>
         </div>
-      : 
-        <div className="grid gap-5 sm:grid-cols-2">
+      ) : (
+        <div className="grid gap-4 sm:grid-cols-2">
           {workout.map((item) => (
-            <div key={item.id}>
-              <Link key={item.id} href={`/dashboard/workouts/${item.id}`} className="bg-amber-100 rounded-3xl p-5 text-center block">
-                <p className="text-2xl font-bold">{item.name}</p>
-                <p className="mb-4 text-lg">{item.createdAt.toLocaleDateString("pl-PL")}</p>
+            <div
+              key={item.id}
+              className="flex flex-col justify-between rounded-xl border border-border bg-card p-5 transition-colors hover:bg-muted/40"
+            >
+              <Link href={`/dashboard/workouts/${item.id}`} className="block">
+                <p className="text-lg font-semibold tracking-tight">
+                  {item.name}
+                </p>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  {item.createdAt.toLocaleDateString("pl-PL")}
+                </p>
+                <p className="mt-3 text-sm text-muted-foreground">
+                  {item.exercises.length} exercises
+                </p>
               </Link>
 
-              <form action={deleteWorkout.bind(null,item.id)}>
-                <button type="submit" className="rounded-lg mt-3 bg-emerald-700 p-2.5 text-xl font-medium text-white hover:bg-emerald-800 transition-colors">
-                  Delete workout
+              <form
+                action={deleteWorkout.bind(null, item.id)}
+                className="mt-4"
+              >
+                <button
+                  type="submit"
+                  className="inline-flex cursor-pointer items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-destructive"
+                >
+                  <Trash2 size={14} /> Delete
                 </button>
               </form>
             </div>
           ))}
         </div>
-      }
+      )}
     </div>
   )
 }

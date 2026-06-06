@@ -12,27 +12,28 @@ export default async function Dashboard(){
 
   if(!userId) return;
   const workout = await db.workout.findMany({
-    where:{
-      userId
+    where: {
+      userId,
     },
-    include:
-    { 
-      exercises:true
-    }
-  }
-  )
+    include: {
+      exercises: true,
+    },
+    orderBy: { createdAt: "desc" },
+  })
 
-  return(
-    <div className="mx-auto max-w-2xl px-4 py-8">
-      <WelcomeHeader/>
-      <StatsGrid workout={workout}/>
-      <RecentWorkouts workout={workout}/>
-      <Link 
-        href="/dashboard/workouts" 
-        className="mx-auto mt-6 block w-60 rounded-xl bg-amber-300 py-3 text-center text-xl font-semibold text-amber-950 transition-colors hover:bg-amber-400"
-      >
-        See all workouts
-      </Link>
+  return (
+    <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6">
+      <WelcomeHeader />
+      <StatsGrid workout={workout} />
+      <RecentWorkouts workout={workout} />
+      <div className="mt-6">
+        <Link
+          href="/dashboard/workouts"
+          className="inline-flex items-center justify-center rounded-lg border border-border bg-card px-4 py-2.5 text-sm font-medium transition-colors hover:bg-muted"
+        >
+          See all workouts
+        </Link>
+      </div>
     </div>
   )
 }

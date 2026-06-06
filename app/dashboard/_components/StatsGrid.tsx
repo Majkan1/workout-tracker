@@ -1,19 +1,36 @@
 import { Workout } from "@/app/types"
-export function StatsGrid({workout}:{workout:Workout []}){
-  return(
-    <div className="mx-auto text-center text-2xl flex max-w-3xl gap-4 justify-center items-center mb-12">
-      <div className="rounded-xl bg-slate-50 p-4">
-        <p className="mt-2 text-xl text-slate-500">Workouts together:</p>
-        <p className="font-semibold text-emerald-500">{workout.length}</p>
-      </div>
-      <div className="rounded-xl bg-slate-50 p-4">
-        <p className=" mt-2 text-xl text-slate-500">Exercises together:</p>
-        <p className="font-semibold text-emerald-500">{workout.reduce((acc,cur)=>(acc+cur.exercises.length),0)}</p>
-      </div>
-      <div>
-        <p className=" mt-2 text-lg text-slate-700">Latest workout:</p>
-        <p className="font-semibold text-emerald-500">{workout[0]?.name}</p>
-      </div>
+import { Dumbbell, Activity, CalendarClock } from "lucide-react"
+
+export function StatsGrid({ workout }: { workout: Workout[] }) {
+  const totalExercises = workout.reduce(
+    (acc, cur) => acc + cur.exercises.length,
+    0,
+  )
+
+  const stats = [
+    { label: "Workouts", value: workout.length, icon: Dumbbell },
+    { label: "Exercises", value: totalExercises, icon: Activity },
+    { label: "Latest", value: workout[0]?.name ?? "—", icon: CalendarClock },
+  ]
+
+  return (
+    <div className="mb-10 grid grid-cols-1 gap-3 sm:grid-cols-3">
+      {stats.map(({ label, value, icon: Icon }) => (
+        <div
+          key={label}
+          className="rounded-xl border border-border bg-card p-5"
+        >
+          <div className="flex items-center gap-2 text-muted-foreground">
+            <Icon size={16} />
+            <span className="text-xs font-medium uppercase tracking-wider">
+              {label}
+            </span>
+          </div>
+          <p className="mt-3 truncate text-2xl font-semibold tracking-tight">
+            {value}
+          </p>
+        </div>
+      ))}
     </div>
   )
 }

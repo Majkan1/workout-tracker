@@ -26,7 +26,7 @@ describe("WorkoutList",()=>{
 
     test("render a link to proper add a next workout",()=>{
         render(<WorkoutList workout={mockWorkout}/>)
-        const addLink = screen.getByRole("link",{name:"/\+Add new workout/i"});
+        const addLink = screen.getByRole("link",{name:/Add new workout/i});
         expect(addLink).toBeInTheDocument();
         expect(addLink).toHaveAttribute("href","/dashboard/workouts/new")
         expect(screen.getByText("Add workout")).toBeInTheDocument()

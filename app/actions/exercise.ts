@@ -7,6 +7,16 @@ export async function createExercise(name:string,repsNumber:number,setsNumber:nu
   const {userId} = await auth()
 
   if(!userId)  throw new Error("Unauthorized");
+
+  const workout = await getPrisma().workout.findUnique({
+    where: { id: workoutId },
+    select: { userId: true },
+  })
+
+  if (!workout || workout.userId !== userId) {
+    throw new Error("Not found or unauthorized")
+  }
+
   await getPrisma().exercise.create({
     data:{
               name,

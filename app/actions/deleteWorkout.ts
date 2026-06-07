@@ -6,7 +6,7 @@ import {auth} from "@clerk/nextjs/server"
 
 export async function deleteWorkout(id:string){
     const {userId} = await auth()
-    if(!userId) throw new Error("Unauthorized ")
+    if(!userId) throw new Error("Unauthorized")
     await getPrisma().workout.delete({
         where:{
             id,

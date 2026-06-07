@@ -13,7 +13,7 @@ export async function getWorkoutByIdForUser(id: string, userId: string) {
   });
 }
 
-describe("Wokrout tests",()=>{
+describe("Workout tests",()=>{
     test("this shows if the workout name render corrextly",()=>{
         render(<WorkoutDetails workout={mockWorkout}/>)
         expect(screen.getByText("Workout 1")).toBeInTheDocument()

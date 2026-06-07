@@ -38,14 +38,14 @@ export default function About() {
         <p>
           Workout Tracker was born out of a simple need: replacing cluttered
           notebooks, scattered phone notes and complicated spreadsheets with one
-          clean, focused app. Whether you&apos;re picking up weights for the
+          clean, focused app. Whether you are picking up weights for the
           first time or tracking specific volume as an advanced lifter, this tool
           is built to keep you accountable.
         </p>
         <p>
           We believe consistency is the key to progress. By giving you a
           distraction-free place to log your exercises, sets, reps and weights, we
-          remove friction from your training. Focus on the lift — we&apos;ll
+          remove friction from your training. Focus on the lift — we will
           handle the tracking.
         </p>
       </div>

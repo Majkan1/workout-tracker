@@ -14,7 +14,7 @@ export async function DeleteExercise(id:string){
         })
 
     if (!exercise || exercise.workout.userId !== userId) {
-        throw new Error("Not found or unathorized")
+        throw new Error("Not found or unauthorized")
     }
 
     await getPrisma().exercise.delete({

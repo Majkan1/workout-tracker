@@ -20,5 +20,5 @@ export async function DeleteExercise(id:string){
     await getPrisma().exercise.delete({
         where:{ id },
     })
-    revalidatePath("dashboard")
+    revalidatePath("/dashboard")
 }

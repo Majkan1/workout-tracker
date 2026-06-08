@@ -16,7 +16,7 @@ export default function ExerciseForm() {
   const params = useParams()
   const workoutId = params.id as string
 
-  return (
+  return(
     <section className="rounded-xl border border-border bg-card p-6">
       <h2 className="text-lg font-semibold tracking-tight">Add exercise</h2>
       <p className="mt-1 text-sm text-muted-foreground">

@@ -1,17 +1,19 @@
-import {describe,test,expect} from "vitest"
+import {describe,test,expect,vi} from "vitest"
 import {render,screen} from "@testing-library/react"
-import { getPrisma } from "@/lib/prisma";
+import "@testing-library/jest-dom"
 import WorkoutDetails from "./WorkoutDetail";
+
+vi.mock("@/app/actions/deleteExercise", () => ({ DeleteExercise: vi.fn() }))
+
+vi.mock("@/app/actions/exercise", () => ({ createExercise: vi.fn() }))
+
+vi.mock("next/navigation", () => ({
+    useRouter: () => ({ refresh: vi.fn() }),
+    useParams: () => ({ id: "1" }),
+}))
 
     const mockWorkout = { id: "1", name: "Workout 1", createdAt: new Date(),
     exercises: [{ name: "ola", reps: 10 ,id:"1",sets:10,weight:10}] }
-
-export async function getWorkoutByIdForUser(id: string, userId: string) {
-  return getPrisma().workout.findUnique({
-    where: { id, userId },
-    include: { exercises: true },
-  });
-}
 
 describe("Workout tests",()=>{
     test("this shows if the workout name render corrextly",()=>{
@@ -26,7 +28,6 @@ describe("Workout tests",()=>{
 
     test("this shows he reps sets weight",()=>{
         render(<WorkoutDetails workout={mockWorkout}/>);
-        const items = screen.getAllByAltText(/10/)
-        expect(items).toHaveLength(3);
+        expect(screen.getByText(/10 sets · 10 reps · 10 kg/)).toBeInTheDocument();
     })
 })

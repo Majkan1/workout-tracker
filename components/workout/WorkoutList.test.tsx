@@ -29,6 +29,6 @@ describe("WorkoutList",()=>{
         const addLink = screen.getByRole("link",{name:/Add new workout/i});
         expect(addLink).toBeInTheDocument();
         expect(addLink).toHaveAttribute("href","/dashboard/workouts/new")
-        expect(screen.getByText("Add workout")).toBeInTheDocument()
+        expect(screen.getByText("+ Add new workout")).toBeInTheDocument()
     })
 })

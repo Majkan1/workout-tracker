@@ -4,7 +4,7 @@ import ExerciseForm from "@/components/workout/ExerciseForm";
 import { DeleteExercise } from "@/app/actions/deleteExercise";
 import { ArrowLeft, Trash2 } from "lucide-react";
 
-export default async function WorkoutDetails({ workout }: { workout: Workout }) {
+export default function WorkoutDetails({ workout }: { workout: Workout }) {
   return (
     <div className="mx-auto max-w-2xl px-4 py-10 sm:px-6">
       <Link

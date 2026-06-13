@@ -1,5 +1,5 @@
 "use client"
-import { createExercise } from "@/app/actions/exercise"
+import { createExercise } from "@/app/actions/createExercise"
 import { useParams, useRouter } from "next/navigation"
 import { useState } from "react"
 

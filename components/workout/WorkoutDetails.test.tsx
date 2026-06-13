@@ -5,7 +5,7 @@ import WorkoutDetails from "./WorkoutDetail";
 
 vi.mock("@/app/actions/deleteExercise", () => ({ DeleteExercise: vi.fn() }))
 
-vi.mock("@/app/actions/exercise", () => ({ createExercise: vi.fn() }))
+vi.mock("@/app/actions/createExercise", () => ({ createExercise: vi.fn() }))
 
 vi.mock("next/navigation", () => ({
     useRouter: () => ({ refresh: vi.fn() }),

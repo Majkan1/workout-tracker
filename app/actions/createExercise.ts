@@ -1,15 +1,8 @@
 "use server"
-import {z} from "zod"
 import {auth} from "@clerk/nextjs/server"
 import { getPrisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
-
-export const createExerciseSchema = z.object({
-  name: z.string().min(1,"Exercise name is required"),
-  sets: z.number().min(1,"Number of sets must be minimum 1"),
-  reps: z.number().min(1,"Number of reps must be minimum 1"),
-  weight: z.number().optional(),
-})
+import { createExerciseSchema } from "@/app/actions/schemas"
 
 export async function createExercise(name:string,repsNumber:number,setsNumber:number,weightNumber:number,workoutId:string){
   const {userId} = await auth()

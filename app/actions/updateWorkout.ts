@@ -2,7 +2,7 @@
 import {auth} from "@clerk/nextjs/server"
 import { getPrisma } from "@/lib/prisma"
 import { revalidatePath } from "next/cache"
-import { createWorkoutSchema } from "@/app/actions/createWorkout"
+import { createWorkoutSchema } from "@/app/actions/schemas"
 
 export async function updateWorkout(name:string,id:string){
     const {userId} = await auth();

@@ -4,12 +4,11 @@ import {auth} from "@clerk/nextjs/server"
 import { getPrisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 
-const createExerciseSchema = z.object({
+export const createExerciseSchema = z.object({
   name: z.string().min(1,"Exercise name is required"),
   sets: z.number().min(1,"Number of sets must be minimum 1"),
   reps: z.number().min(1,"Number of reps must be minimum 1"),
   weight: z.number().optional(),
-  workoutId: z.string().min(1)
 })
 
 export async function createExercise(name:string,repsNumber:number,setsNumber:number,weightNumber:number,workoutId:string){
@@ -22,7 +21,6 @@ export async function createExercise(name:string,repsNumber:number,setsNumber:nu
     sets:setsNumber,
     reps:repsNumber,
     weight:weightNumber,
-    workoutId
   })
 
   if(!result.success){
@@ -44,7 +42,7 @@ export async function createExercise(name:string,repsNumber:number,setsNumber:nu
               reps: result.data.reps,
               sets: result.data.sets,
               weight: result.data.weight,
-              workout:{ connect:{id:result.data.workoutId}},
+              workout:{ connect:{id:workoutId}},
             }
     }
 )

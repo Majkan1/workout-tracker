@@ -2,7 +2,7 @@ import { Workout } from "@/app/types";
 import Link from "next/link";
 import ExerciseForm from "@/components/workout/ExerciseForm";
 import { DeleteExercise } from "@/app/actions/deleteExercise";
-import { ArrowLeft, Trash2 } from "lucide-react";
+import { ArrowRight, Trash2,ArrowLeft } from "lucide-react";
 
 export default function WorkoutDetails({ workout }: { workout: Workout }) {
   return (
@@ -13,14 +13,21 @@ export default function WorkoutDetails({ workout }: { workout: Workout }) {
       >
         <ArrowLeft size={16} /> Back to workouts
       </Link>
-
-      <header className="mb-8 mt-6">
-        <h1 className="text-3xl font-semibold tracking-tight">{workout.name}</h1>
+        <header className="mb-8 mt-6 flex items-center justify-between">
+          <h1 className="text-3xl font-semibold tracking-tight">
+            {workout.name}
+            </h1>
+            <Link
+              href={`/dashboard/workouts/${workout.id}/edit`}
+              className="inline-flex items-end text-sm text-muted-foreground transition-colors hover:text-foreground"
+            >
+              <ArrowRight size={16} /> Edit
+            </Link>
+        </header>
         <p className="mt-1 text-sm text-muted-foreground">
           {new Date(workout.createdAt).toLocaleDateString("pl-PL")}
         </p>
-      </header>
-
+        
       <section className="mb-10">
         <h2 className="mb-3 text-xs font-medium uppercase tracking-wider text-muted-foreground">
           Exercises
@@ -38,7 +45,10 @@ export default function WorkoutDetails({ workout }: { workout: Workout }) {
                 className="flex items-center justify-between gap-4 px-5 py-4"
               >
                 <div className="min-w-0">
-                  <p className="truncate font-medium">{item.name}</p>
+                  <p className="truncate font-medium">
+                    {item.name}
+                    
+                    </p>
                   <p className="mt-0.5 text-sm text-muted-foreground">
                     {item.sets} sets · {item.reps} reps · {item.weight ?? "—"} kg
                   </p>

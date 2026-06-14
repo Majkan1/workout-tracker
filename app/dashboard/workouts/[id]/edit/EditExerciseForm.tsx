@@ -17,14 +17,14 @@ export default function ExerciseForm({exercise}:{exercise:Exercise}) {
   const [weight, setWeight] = useState(String(exercise.weight ?? ""))
   const router = useRouter()
   return(
-    <section className="rounded-xl border border-border bg-card p-6">
+    <section className="rounded-xl border border-border bg-card p-6 mr-100 ml-100 mt-10 mb-10">
       <h2 className="text-lg font-semibold tracking-tight">Add exercise</h2>
       <p className="mt-1 text-sm text-muted-foreground">
         Log the exercise with your sets, reps and weight.
       </p>
       
       <form
-        className="mt-5 space-y-4"
+        className="mt-5 space-y-4 "
         onSubmit={async (event) => {
           event.preventDefault()
           setError("")

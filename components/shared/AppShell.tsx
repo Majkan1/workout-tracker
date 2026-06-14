@@ -9,8 +9,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   
   const isDashboard = pathme.startsWith("/dashboard");
   const isAuth = pathme.startsWith("/auth");
+  const isAbout = pathme.startsWith("/about"); 
 
-  const showFooter = ! isDashboard && !isAuth 
+  const showFooter = ! isDashboard && !isAuth && !isAbout
 
   return (
     <ClerkProvider signInUrl="/auth/sign-in" signUpUrl="/auth/sign-up">

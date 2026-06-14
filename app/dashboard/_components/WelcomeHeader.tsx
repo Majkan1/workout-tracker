@@ -10,7 +10,7 @@ export async function WelcomeHeader() {
         Hello, {name}
       </h1>
       <p className="mt-1 text-sm text-muted-foreground">
-        Here&apos;s how your training is going.
+        Here is how your training is going.
       </p>
     </div>
   )

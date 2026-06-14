@@ -25,7 +25,7 @@ model Exercise {
   name      String
   sets      Int
   reps      Int
-  weight    Float?
+  weight    Int
   workoutId String
   workout   Workout  @relation(fields: [workoutId], references: [id], onDelete: Cascade)
 } 

@@ -14,12 +14,12 @@ export default function EditWorkoutForm({workout}:{workout:Workout}){
         <div>
           <Link
           href="/dashboard"
-          className="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
+          className="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground mt-15 ml-15"
           >
           <ArrowLeft size={16} /> Back to dashboard
           </Link>
 
-                <div className="mt-6 rounded-xl border border-border bg-card p-6">
+                <div className=" rounded-xl border border-border bg-card p-6 mr-100 ml-100 mt-10">
                   <h1 className="text-xl font-semibold tracking-tight">Update the  workout</h1>
                   <p className="mt-1 text-sm text-muted-foreground">
                     Give your workout a name again.

@@ -4,8 +4,8 @@ import {getPrisma} from "@/lib/prisma"
 import { revalidatePath } from "next/cache"
 import {auth} from "@clerk/nextjs/server"
 import {z} from "zod"
-const createWorkoutSchema = z.object({
-    name: z.string().min(1,"The name should contains at least one letter or number")   
+export const createWorkoutSchema = z.object({
+    name: z.string().min(1,"The name should contain at least one letter or number")
 })
 
 export async function createWorkout(name:string){

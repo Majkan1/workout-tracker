@@ -127,8 +127,8 @@ export default function ExerciseForm() {
         {error &&
           <p>You wrote wrong data ,try another one</p>
         }
-        <button disabled={isPending}>{isPending ?"Adding ...":"Add an exercise"}</button>
       </form>
+      <button disabled={isPending}>{isPending ?"Adding ...":"Add an exercise"}</button>
     </section>
   )
 }

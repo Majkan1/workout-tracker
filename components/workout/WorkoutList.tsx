@@ -1,7 +1,7 @@
-import { deleteWorkout } from "@/app/actions/deleteWorkout"
-import { Workout } from "@/app/types"
-import Link from "next/link"
-import { Trash2 } from "lucide-react"
+import { deleteWorkout } from "@/app/actions/deleteWorkout";
+import { Workout } from "@/app/types";
+import Link from "next/link";
+import { Trash2 } from "lucide-react";
 
 export function WorkoutList({ workout = [] }: { workout?: Workout[] }) {
   return (
@@ -44,10 +44,7 @@ export function WorkoutList({ workout = [] }: { workout?: Workout[] }) {
                 </p>
               </Link>
 
-              <form
-                action={deleteWorkout.bind(null, item.id)}
-                className="mt-4"
-              >
+              <form action={deleteWorkout.bind(null, item.id)} className="mt-4">
                 <button
                   type="submit"
                   className="inline-flex cursor-pointer items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-destructive"
@@ -60,5 +57,5 @@ export function WorkoutList({ workout = [] }: { workout?: Workout[] }) {
         </div>
       )}
     </div>
-  )
+  );
 }

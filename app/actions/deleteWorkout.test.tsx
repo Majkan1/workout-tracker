@@ -1,7 +1,7 @@
-import { describe,test,expect } from "vitest";
+import { describe, test, expect } from "vitest"
 
-describe("deleteWorkout",()=>{
-    test("always goes",()=>{
-        expect(1+1).toBe(2);
-    })
+describe("deleteWorkout", () => {
+  test("always goes", () => {
+    expect(1 + 1).toBe(2)
+  })
 })

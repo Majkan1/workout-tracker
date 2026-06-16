@@ -21,9 +21,7 @@ export function RecentWorkouts({ workout }: { workout: Workout[] }) {
 
       {recent.length === 0 ? (
         <div className="rounded-xl border border-dashed border-border p-10 text-center">
-          <p className="text-sm text-muted-foreground">
-            No workouts yet. Add your first one.
-          </p>
+          <p className="text-sm text-muted-foreground">No workouts yet. Add your first one.</p>
         </div>
       ) : (
         <ul className="divide-y divide-border overflow-hidden rounded-xl border border-border bg-card">

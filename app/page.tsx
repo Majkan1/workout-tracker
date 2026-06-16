@@ -1,37 +1,34 @@
-import { auth } from "@clerk/nextjs/server";
-import { redirect } from "next/navigation";
-import Image from "next/image";
-import Link from "next/link";
-import { Dumbbell, LineChart, History } from "lucide-react";
+import { auth } from "@clerk/nextjs/server"
+import { redirect } from "next/navigation"
+import Image from "next/image"
+import Link from "next/link"
+import { Dumbbell, LineChart, History } from "lucide-react"
 
-export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic"
 
 const features = [
   {
     icon: Dumbbell,
     title: "Log any lift",
-    description:
-      "Record exercises, sets, reps and weight in a clean, distraction-free form.",
+    description: "Record exercises, sets, reps and weight in a clean, distraction-free form.",
   },
   {
     icon: LineChart,
     title: "See your progress",
-    description:
-      "Every session is saved, so it's easy to compare today against last month.",
+    description: "Every session is saved, so it's easy to compare today against last month.",
   },
   {
     icon: History,
     title: "Review your history",
-    description:
-      "Look back at exactly what you did last time and plan your next workout.",
+    description: "Look back at exactly what you did last time and plan your next workout.",
   },
-];
+]
 
 const steps = [
   { title: "Create an account", description: "It takes less than a minute." },
   { title: "Log your first workout", description: "Add exercises, sets and reps." },
   { title: "Track your progress", description: "Watch the numbers move over time." },
-];
+]
 
 const testimonials = [
   {
@@ -41,18 +38,16 @@ const testimonials = [
     role: "Powerlifting",
   },
   {
-    quote:
-      "Glancing at last month's numbers before I train completely changed how I plan my sets.",
+    quote: "Glancing at last month's numbers before I train completely changed how I plan my sets.",
     name: "Nina R.",
     role: "Cross training",
   },
   {
-    quote:
-      "Fast on my phone, easy to update between sets. No clutter, no nonsense.",
+    quote: "Fast on my phone, easy to update between sets. No clutter, no nonsense.",
     name: "Daria P.",
     role: "Fitness coach",
   },
-];
+]
 
 const faqs = [
   {
@@ -71,12 +66,12 @@ const faqs = [
     q: "Do I need an account?",
     a: "Yes — your workouts are saved to your account so you can reach them from any device.",
   },
-];
+]
 
 export default async function LandingPage() {
-  const { userId } = await auth();
+  const { userId } = await auth()
   if (userId) {
-    redirect("/dashboard");
+    redirect("/dashboard")
   }
 
   return (
@@ -121,17 +116,12 @@ export default async function LandingPage() {
 
         <div className="mt-14 grid gap-4 sm:grid-cols-3">
           {features.map(({ icon: Icon, title, description }) => (
-            <div
-              key={title}
-              className="rounded-2xl border border-border bg-card p-6"
-            >
+            <div key={title} className="rounded-2xl border border-border bg-card p-6">
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-muted">
                 <Icon size={20} className="text-foreground" />
               </div>
               <h3 className="mt-4 text-lg font-semibold tracking-tight">{title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                {description}
-              </p>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{description}</p>
             </div>
           ))}
         </div>
@@ -141,9 +131,7 @@ export default async function LandingPage() {
       <section className="border-y border-border bg-muted/40">
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-              How it works
-            </h2>
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">How it works</h2>
             <p className="mt-4 text-muted-foreground">
               Three steps from signing up to staying consistent.
             </p>
@@ -155,12 +143,8 @@ export default async function LandingPage() {
                 <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full border border-border bg-background font-mono text-lg font-medium">
                   {i + 1}
                 </span>
-                <h3 className="mt-5 text-lg font-semibold tracking-tight">
-                  {step.title}
-                </h3>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  {step.description}
-                </p>
+                <h3 className="mt-5 text-lg font-semibold tracking-tight">{step.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{step.description}</p>
               </div>
             ))}
           </div>
@@ -170,9 +154,7 @@ export default async function LandingPage() {
       {/* Testimonials */}
       <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-            What people say
-          </h2>
+          <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">What people say</h2>
           <p className="mt-4 text-muted-foreground">
             From lifters who train consistently and log every session.
           </p>
@@ -212,14 +194,12 @@ export default async function LandingPage() {
                     +
                   </span>
                 </summary>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  {a}
-                </p>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{a}</p>
               </details>
             ))}
           </div>
         </div>
       </section>
     </div>
-  );
+  )
 }

@@ -1,25 +1,31 @@
 "use server"
-import {auth} from "@clerk/nextjs/server"
-import { getPrisma } from "@/lib/prisma";
-import { revalidatePath } from "next/cache";
+import { auth } from "@clerk/nextjs/server"
+import { getPrisma } from "@/lib/prisma"
+import { revalidatePath } from "next/cache"
 import { createExerciseSchema } from "@/app/actions/schemas"
 
-export async function createExercise(name:string,repsNumber:number,setsNumber:number,weightNumber:number,workoutId:string){
-  const {userId} = await auth()
+export async function createExercise(
+  name: string,
+  repsNumber: number,
+  setsNumber: number,
+  weightNumber: number,
+  workoutId: string,
+) {
+  const { userId } = await auth()
 
-  if(!userId)  throw new Error("Unauthorized");
+  if (!userId) throw new Error("Unauthorized")
 
   const result = createExerciseSchema.safeParse({
     name,
-    sets:setsNumber,
-    reps:repsNumber,
-    weight:weightNumber,
+    sets: setsNumber,
+    reps: repsNumber,
+    weight: weightNumber,
   })
 
-  if(!result.success){
+  if (!result.success) {
     throw new Error(result.error.issues[0].message)
   }
-  
+
   const workout = await getPrisma().workout.findUnique({
     where: { id: workoutId },
     select: { userId: true },
@@ -30,14 +36,13 @@ export async function createExercise(name:string,repsNumber:number,setsNumber:nu
   }
 
   await getPrisma().exercise.create({
-    data:{
-              name: result.data.name,
-              reps: result.data.reps,
-              sets: result.data.sets,
-              weight: result.data.weight,
-              workout:{ connect:{id:workoutId}},
-            }
-    }
-)
-revalidatePath("/dashboard")
+    data: {
+      name: result.data.name,
+      reps: result.data.reps,
+      sets: result.data.sets,
+      weight: result.data.weight,
+      workout: { connect: { id: workoutId } },
+    },
+  })
+  revalidatePath("/dashboard")
 }

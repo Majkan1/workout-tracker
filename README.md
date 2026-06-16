@@ -26,19 +26,19 @@ A fullstack workout tracking app where users can log training sessions, add and 
 
 ## Tech stack
 
-| Layer | Technology |
-|---|---|
-| Framework | Next.js 16 (App Router) |
-| Language | TypeScript |
-| Auth | Clerk |
-| ORM | Prisma 7 |
-| Database | PostgreSQL (Supabase) |
-| Validation | Zod |
-| Styling | Tailwind CSS |
-| Components | shadcn/ui |
-| Testing | Vitest + React Testing Library |
-| CI/CD | GitHub Actions |
-| Deployment | Vercel |
+| Layer      | Technology                     |
+| ---------- | ------------------------------ |
+| Framework  | Next.js 16 (App Router)        |
+| Language   | TypeScript                     |
+| Auth       | Clerk                          |
+| ORM        | Prisma 7                       |
+| Database   | PostgreSQL (Supabase)          |
+| Validation | Zod                            |
+| Styling    | Tailwind CSS                   |
+| Components | shadcn/ui                      |
+| Testing    | Vitest + React Testing Library |
+| CI/CD      | GitHub Actions                 |
+| Deployment | Vercel                         |
 
 ---
 

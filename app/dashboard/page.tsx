@@ -1,16 +1,15 @@
-import {getPrisma} from "@/lib/prisma"
-import {auth} from "@clerk/nextjs/server"
-import { WelcomeHeader } from "./_components/WelcomeHeader";
-import { StatsGrid } from "./_components/StatsGrid";
-import { RecentWorkouts } from "./_components/RecentWorkouts";
-import Link from "next/link";
+import { getPrisma } from "@/lib/prisma"
+import { auth } from "@clerk/nextjs/server"
+import { WelcomeHeader } from "./_components/WelcomeHeader"
+import { StatsGrid } from "./_components/StatsGrid"
+import { RecentWorkouts } from "./_components/RecentWorkouts"
+import Link from "next/link"
 
-export default async function Dashboard(){
+export default async function Dashboard() {
+  const db = getPrisma()
+  const { userId } = await auth()
 
-  const db = getPrisma();
-  const { userId } = await auth();
-
-  if(!userId) return;
+  if (!userId) return
   const workout = await db.workout.findMany({
     where: {
       userId,

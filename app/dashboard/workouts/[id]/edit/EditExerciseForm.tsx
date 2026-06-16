@@ -8,27 +8,27 @@ const inputClass =
   "h-11 w-full rounded-lg border border-input bg-background px-3 text-sm outline-none transition-colors focus:border-ring focus:ring-2 focus:ring-ring/40"
 const labelClass = "mb-1.5 block text-sm font-medium"
 
-export default function ExerciseForm({exercise}:{exercise:Exercise}) {
-  const [error,setError] = useState("")
-  const [isPending,setIsPending] = useState(false)
+export default function ExerciseForm({ exercise }: { exercise: Exercise }) {
+  const [error, setError] = useState("")
+  const [isPending, setIsPending] = useState(false)
   const [text, setText] = useState(String(exercise.name))
   const [sets, setSets] = useState(String(exercise.sets))
   const [reps, setReps] = useState(String(exercise.reps))
   const [weight, setWeight] = useState(String(exercise.weight ?? ""))
   const router = useRouter()
-  return(
+  return (
     <section className="rounded-xl border border-border bg-card p-6 mr-100 ml-100 mt-10 mb-10">
       <h2 className="text-lg font-semibold tracking-tight">Add exercise</h2>
       <p className="mt-1 text-sm text-muted-foreground">
         Log the exercise with your sets, reps and weight.
       </p>
-      
+
       <form
         className="mt-5 space-y-4 "
         onSubmit={async (event) => {
           event.preventDefault()
           setError("")
-          setIsPending(true);
+          setIsPending(true)
           try {
             if (!text.trim()) return
             const repsNumber = Number(reps)
@@ -39,14 +39,13 @@ export default function ExerciseForm({exercise}:{exercise:Exercise}) {
             if (!weightNumber) return
             if (!exercise.id) {
               console.error("Missing workout id - cannot create exercise")
-              return 
+              return
             }
             await updateExercise(text, repsNumber, setsNumber, weightNumber, exercise.id)
-            router.refresh() 
+            router.refresh()
           } catch (error) {
             setError("you wrote a wrong value try another one ")
-          }
-          finally{
+          } finally {
             setIsPending(false)
           }
         }}
@@ -118,11 +117,9 @@ export default function ExerciseForm({exercise}:{exercise:Exercise}) {
           disabled={isPending}
           className="w-full cursor-pointer rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90 sm:w-auto"
         >
-          {isPending ?"Saving ...":"Save an exercise"}
+          {isPending ? "Saving ..." : "Save an exercise"}
         </button>
-        {error &&
-          <p>You wrote wrong data ,try another one</p>
-        }
+        {error && <p>You wrote wrong data ,try another one</p>}
       </form>
     </section>
   )

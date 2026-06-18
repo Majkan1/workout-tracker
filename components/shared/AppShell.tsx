@@ -1,17 +1,17 @@
-"use client";
-import { ClerkProvider } from "@clerk/nextjs";
-import Footer from "@/components/shared/Footer";
-import Navbar from "@/components/shared/Navbar";
-import { usePathname } from "next/navigation";
+"use client"
+import { ClerkProvider } from "@clerk/nextjs"
+import Footer from "@/components/shared/Footer"
+import Navbar from "@/components/shared/Navbar"
+import { usePathname } from "next/navigation"
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
-  const pathme = usePathname();
+  const pathme = usePathname()
 
-  const isDashboard = pathme.startsWith("/dashboard");
-  const isAuth = pathme.startsWith("/auth");
-  const isAbout = pathme.startsWith("/about");
+  const isDashboard = pathme.startsWith("/dashboard")
+  const isAuth = pathme.startsWith("/auth")
+  const isAbout = pathme.startsWith("/about")
 
-  const showFooter = !isDashboard && !isAuth && !isAbout;
+  const showFooter = !isDashboard && !isAuth && !isAbout
 
   return (
     <ClerkProvider signInUrl="/auth/sign-in" signUpUrl="/auth/sign-up">
@@ -21,5 +21,5 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         {showFooter && <Footer />}
       </div>
     </ClerkProvider>
-  );
+  )
 }

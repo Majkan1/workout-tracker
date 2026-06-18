@@ -1,8 +1,8 @@
-"use client";
-import Link from "next/link";
-import Image from "next/image";
-import { Show, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
-import Logo from "@/public/Black-logo.png";
+"use client"
+import Link from "next/link"
+import Image from "next/image"
+import { Show, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs"
+import Logo from "@/public/Black-logo.png"
 
 export default function Navbar() {
   return (
@@ -17,9 +17,7 @@ export default function Navbar() {
               width={32}
               className="h-8 w-8 object-contain"
             />
-            <span className="text-sm font-semibold tracking-tight">
-              Workout Tracker
-            </span>
+            <span className="text-sm font-semibold tracking-tight">Workout Tracker</span>
           </Link>
           <Link
             href="/about"
@@ -54,5 +52,5 @@ export default function Navbar() {
         </div>
       </nav>
     </header>
-  );
+  )
 }

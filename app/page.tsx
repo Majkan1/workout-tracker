@@ -76,8 +76,7 @@ export default async function LandingPage() {
 
   return (
     <div>
-      {/* Hero */}
-      <section className="relative h-[78svh] min-h-[34rem] w-full overflow-hidden">
+      <section className="relative h-[78svh] min-h-136 w-full overflow-hidden">
         <Image
           src="/gym-picture.avif"
           alt="Person training in a gym"
@@ -103,7 +102,6 @@ export default async function LandingPage() {
         </div>
       </section>
 
-      {/* Features */}
       <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
@@ -127,7 +125,6 @@ export default async function LandingPage() {
         </div>
       </section>
 
-      {/* How it works */}
       <section className="border-y border-border bg-muted/40">
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
           <div className="mx-auto max-w-2xl text-center">
@@ -151,7 +148,6 @@ export default async function LandingPage() {
         </div>
       </section>
 
-      {/* Testimonials */}
       <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">What people say</h2>
@@ -178,7 +174,6 @@ export default async function LandingPage() {
         </div>
       </section>
 
-      {/* FAQ */}
       <section className="border-t border-border">
         <div className="mx-auto max-w-3xl px-4 py-20 sm:px-6 sm:py-24">
           <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">

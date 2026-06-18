@@ -1,13 +1,13 @@
-"use client";
-import Link from "next/link";
-import { createWorkout } from "@/app/actions/createWorkout";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
-import { ArrowLeft } from "lucide-react";
+"use client"
+import Link from "next/link"
+import { createWorkout } from "@/app/actions/createWorkout"
+import { useRouter } from "next/navigation"
+import { useState } from "react"
+import { ArrowLeft } from "lucide-react"
 
 export default function Form() {
-  const [text, setText] = useState("");
-  const router = useRouter();
+  const [text, setText] = useState("")
+  const router = useRouter()
 
   return (
     <div className="mx-auto max-w-md px-4 py-10 sm:px-6">
@@ -27,11 +27,11 @@ export default function Form() {
         <form
           className="mt-5 space-y-4"
           onSubmit={async (event) => {
-            event.preventDefault();
-            if (!text.trim()) return;
-            await createWorkout(text);
-            setText("");
-            router.refresh();
+            event.preventDefault()
+            if (!text.trim()) return
+            await createWorkout(text)
+            setText("")
+            router.refresh()
           }}
         >
           <div>
@@ -57,5 +57,5 @@ export default function Form() {
         </form>
       </div>
     </div>
-  );
+  )
 }

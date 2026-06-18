@@ -1,15 +1,14 @@
-import { deleteWorkout } from "@/app/actions/deleteWorkout";
-import { Workout } from "@/app/types";
-import Link from "next/link";
-import { Trash2 } from "lucide-react";
+import { deleteWorkout } from "@/app/actions/deleteWorkout"
+import { Workout } from "@/app/types"
+import Link from "next/link"
+import { Trash2 } from "lucide-react"
+import ConfirmDeleteDialog from "@/components/shared/ConfirmDeleteDialog"
 
 export function WorkoutList({ workout = [] }: { workout?: Workout[] }) {
   return (
     <div className="mx-auto w-full max-w-3xl">
       <div className="mb-8 flex items-center justify-between gap-4">
-        <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-          My workouts
-        </h1>
+        <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">My workouts</h1>
         <Link
           href="/dashboard/workouts/new"
           className="shrink-0 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
@@ -33,9 +32,7 @@ export function WorkoutList({ workout = [] }: { workout?: Workout[] }) {
               className="flex flex-col justify-between rounded-xl border border-border bg-card p-5 transition-colors hover:bg-muted/40"
             >
               <Link href={`/dashboard/workouts/${item.id}`} className="block">
-                <p className="text-lg font-semibold tracking-tight">
-                  {item.name}
-                </p>
+                <p className="text-lg font-semibold tracking-tight">{item.name}</p>
                 <p className="mt-1 text-sm text-muted-foreground">
                   {item.createdAt.toLocaleDateString("pl-PL")}
                 </p>
@@ -44,18 +41,31 @@ export function WorkoutList({ workout = [] }: { workout?: Workout[] }) {
                 </p>
               </Link>
 
-              <form action={deleteWorkout.bind(null, item.id)} className="mt-4">
-                <button
-                  type="submit"
-                  className="inline-flex cursor-pointer items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-destructive"
-                >
-                  <Trash2 size={14} /> Delete
-                </button>
-              </form>
+              <div className="mt-4">
+                <ConfirmDeleteDialog
+                  trigger={
+                    <button
+                      type="button"
+                      className="inline-flex cursor-pointer items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-destructive"
+                    >
+                      <Trash2 size={14} /> Delete
+                    </button>
+                  }
+                  title="Delete workout?"
+                  description={
+                    <>
+                      This will permanently delete{" "}
+                      <span className="font-medium text-foreground">{item.name}</span> and all its
+                      exercises. This action cannot be undone.
+                    </>
+                  }
+                  onConfirm={deleteWorkout.bind(null, item.id)}
+                />
+              </div>
             </div>
           ))}
         </div>
       )}
     </div>
-  );
+  )
 }

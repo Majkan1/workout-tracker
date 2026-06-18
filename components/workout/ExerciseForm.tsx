@@ -1,22 +1,22 @@
-"use client";
-import { createExercise } from "@/app/actions/createExercise";
-import { useParams, useRouter } from "next/navigation";
-import { useState } from "react";
+"use client"
+import { createExercise } from "@/app/actions/createExercise"
+import { useParams, useRouter } from "next/navigation"
+import { useState } from "react"
 
 const inputClass =
-  "h-11 w-full rounded-lg border border-input bg-background px-3 text-sm outline-none transition-colors focus:border-ring focus:ring-2 focus:ring-ring/40";
-const labelClass = "mb-1.5 block text-sm font-medium";
+  "h-11 w-full rounded-lg border border-input bg-background px-3 text-sm outline-none transition-colors focus:border-ring focus:ring-2 focus:ring-ring/40"
+const labelClass = "mb-1.5 block text-sm font-medium"
 
 export default function ExerciseForm() {
-  const [error, setError] = useState("");
-  const [isPending, setIsPending] = useState(false);
-  const [text, setText] = useState("");
-  const [sets, setSets] = useState("");
-  const [reps, setReps] = useState("");
-  const [weight, setWeight] = useState("");
-  const router = useRouter();
-  const params = useParams();
-  const workoutId = params.id as string;
+  const [error, setError] = useState("")
+  const [isPending, setIsPending] = useState(false)
+  const [text, setText] = useState("")
+  const [sets, setSets] = useState("")
+  const [reps, setReps] = useState("")
+  const [weight, setWeight] = useState("")
+  const router = useRouter()
+  const params = useParams()
+  const workoutId = params.id as string
   return (
     <section className="rounded-xl border border-border bg-card p-6">
       <h2 className="text-lg font-semibold tracking-tight">Add exercise</h2>
@@ -27,31 +27,31 @@ export default function ExerciseForm() {
       <form
         className="mt-5 space-y-4"
         onSubmit={async (event) => {
-          event.preventDefault();
-          setError("");
-          setIsPending(true);
+          event.preventDefault()
+          setError("")
+          setIsPending(true)
           try {
-            if (!text.trim()) return;
-            const setsNumber = Number(sets);
-            const repsNumber = Number(reps);
-            const weightNumber = Number(weight);
-            if (!setsNumber) return;
-            if (!repsNumber) return;
-            if (!weightNumber) return;
+            if (!text.trim()) return
+            const setsNumber = Number(sets)
+            const repsNumber = Number(reps)
+            const weightNumber = Number(weight)
+            if (!setsNumber) return
+            if (!repsNumber) return
+            if (!weightNumber) return
             if (!workoutId) {
-              console.error("Missing workout id - cannot create exercise");
-              return;
+              console.error("Missing workout id - cannot create exercise")
+              return
             }
-            await createExercise(text,repsNumber,setsNumber,weightNumber, workoutId);
-            setText("");
-            setSets("");
-            setReps("");
-            setWeight("");
-            router.refresh();
+            await createExercise(text, repsNumber, setsNumber, weightNumber, workoutId)
+            setText("")
+            setSets("")
+            setReps("")
+            setWeight("")
+            router.refresh()
           } catch (error) {
-            setError("you wrote a wrong value try another one ");
+            setError("you wrote a wrong value try another one ")
           } finally {
-            setIsPending(false);
+            setIsPending(false)
           }
         }}
       >
@@ -125,9 +125,7 @@ export default function ExerciseForm() {
         </button>
         {error && <p>You wrote wrong data ,try another one</p>}
       </form>
-      <button disabled={isPending}>
-        {isPending ? "Adding ..." : "Add an exercise"}
-      </button>
+      <button disabled={isPending}>{isPending ? "Adding ..." : "Add an exercise"}</button>
     </section>
-  );
+  )
 }

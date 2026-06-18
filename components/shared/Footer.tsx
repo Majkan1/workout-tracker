@@ -1,7 +1,7 @@
-import Link from "next/link";
+import Link from "next/link"
 
 export default function Footer() {
-  const year = new Date().getFullYear();
+  const year = new Date().getFullYear()
 
   return (
     <footer className="border-t border-border">
@@ -10,9 +10,7 @@ export default function Footer() {
           <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
             Ready to start training?
           </h2>
-          <p className="text-sm text-muted-foreground">
-            Log your first workout in under a minute.
-          </p>
+          <p className="text-sm text-muted-foreground">Log your first workout in under a minute.</p>
         </div>
 
         <Link
@@ -28,5 +26,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  );
+  )
 }

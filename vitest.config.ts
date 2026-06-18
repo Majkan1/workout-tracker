@@ -1,6 +1,6 @@
-import { defineConfig } from "vitest/config";
-import react from "@vitejs/plugin-react";
-import { fileURLToPath, URL } from "url";
+import { defineConfig } from "vitest/config"
+import react from "@vitejs/plugin-react"
+import { fileURLToPath, URL } from "url"
 
 export default defineConfig({
   resolve: {
@@ -13,4 +13,4 @@ export default defineConfig({
     environment: "jsdom",
     globals: true,
   },
-});
+})

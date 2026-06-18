@@ -8,19 +8,19 @@ const inputClass =
   "h-11 w-full rounded-lg border border-input bg-background px-3 text-sm outline-none transition-colors focus:border-ring focus:ring-2 focus:ring-ring/40"
 const labelClass = "mb-1.5 block text-sm font-medium"
 
-export default function ExerciseForm({ exercise }: { exercise: Exercise }) {
+export default function EditExerciseForm({ exercise }: { exercise: Exercise }) {
   const [error, setError] = useState("")
   const [isPending, setIsPending] = useState(false)
-  const [text, setText] = useState(String(exercise.name))
+  const [text, setText] = useState(exercise.name)
   const [sets, setSets] = useState(String(exercise.sets))
   const [reps, setReps] = useState(String(exercise.reps))
   const [weight, setWeight] = useState(String(exercise.weight ?? ""))
   const router = useRouter()
   return (
-    <section className="rounded-xl border border-border bg-card p-6 mr-100 ml-100 mt-10 mb-10">
-      <h2 className="text-lg font-semibold tracking-tight">Add exercise</h2>
+    <section className="mx-auto mt-10 mb-10 max-w-md rounded-xl border border-border bg-card p-6">
+      <h2 className="text-lg font-semibold tracking-tight">Edit exercise</h2>
       <p className="mt-1 text-sm text-muted-foreground">
-        Log the exercise with your sets, reps and weight.
+        Update the exercise with your sets, reps and weight.
       </p>
 
       <form
@@ -38,13 +38,13 @@ export default function ExerciseForm({ exercise }: { exercise: Exercise }) {
             if (!setsNumber) return
             if (!weightNumber) return
             if (!exercise.id) {
-              console.error("Missing workout id - cannot create exercise")
+              console.error("Missing exercise id - cannot update exercise")
               return
             }
             await updateExercise(text, repsNumber, setsNumber, weightNumber, exercise.id)
             router.refresh()
           } catch (error) {
-            setError("you wrote a wrong value try another one ")
+            setError("You wrote a wrong value, try another one")
           } finally {
             setIsPending(false)
           }
@@ -119,7 +119,7 @@ export default function ExerciseForm({ exercise }: { exercise: Exercise }) {
         >
           {isPending ? "Saving ..." : "Save an exercise"}
         </button>
-        {error && <p>You wrote wrong data ,try another one</p>}
+        {error && <p>{error}</p>}
       </form>
     </section>
   )

@@ -32,17 +32,17 @@ export default function ExerciseForm() {
           setIsPending(true);
           try {
             if (!text.trim()) return;
-            const Number1 = Number(sets);
-            const Number2 = Number(reps);
-            const Number3 = Number(weight);
-            if (!Number1) return;
-            if (!Number2) return;
-            if (!Number3) return;
+            const setsNumber = Number(sets);
+            const repsNumber = Number(reps);
+            const weightNumber = Number(weight);
+            if (!setsNumber) return;
+            if (!repsNumber) return;
+            if (!weightNumber) return;
             if (!workoutId) {
               console.error("Missing workout id - cannot create exercise");
               return;
             }
-            await createExercise(text, Number1, Number2, Number3, workoutId);
+            await createExercise(text,repsNumber,setsNumber,weightNumber, workoutId);
             setText("");
             setSets("");
             setReps("");

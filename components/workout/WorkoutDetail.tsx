@@ -1,7 +1,7 @@
 import { Workout } from "@/app/types";
 import Link from "next/link";
 import ExerciseForm from "@/components/workout/ExerciseForm";
-import { DeleteExercise } from "@/app/actions/deleteExercise";
+import { deleteExercise } from "@/app/actions/deleteExercise";
 import { ArrowRight, Trash2, ArrowLeft } from "lucide-react";
 
 export default function WorkoutDetails({ workout }: { workout: Workout }) {
@@ -52,7 +52,7 @@ export default function WorkoutDetails({ workout }: { workout: Workout }) {
                   </p>
                 </div>
 
-                <form action={DeleteExercise.bind(null, item.id)}>
+                <form action={deleteExercise.bind(null, item.id)}>
                   <button
                     type="submit"
                     aria-label="Delete exercise"

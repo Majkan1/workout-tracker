@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import WorkoutDetails from "./WorkoutDetail";
 
-vi.mock("@/app/actions/deleteExercise", () => ({ DeleteExercise: vi.fn() }));
+vi.mock("@/app/actions/deleteExercise", () => ({ deleteExercise: vi.fn() }));
 
 vi.mock("@/app/actions/createExercise", () => ({ createExercise: vi.fn() }));
 

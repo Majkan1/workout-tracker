@@ -15,22 +15,22 @@ const mockWorkout = [
 ]
 
 describe("WorkoutList", () => {
-  test("shows this message if there are not workouts", () => {
+  test("shows an empty state when there are no workouts", () => {
     render(<WorkoutList workout={[]} />)
     expect(screen.getByText("No workouts")).toBeInTheDocument()
   })
 
-  test("doesnt show No workouts if there are data", () => {
+  test("does not show the empty state when workouts exist", () => {
     render(<WorkoutList workout={mockWorkout} />)
     expect(screen.queryByText("No workouts")).not.toBeInTheDocument()
   })
 
-  test("render the workout name", () => {
+  test("renders the workout name", () => {
     render(<WorkoutList workout={mockWorkout} />)
     expect(screen.getByText("Workout 1")).toBeInTheDocument()
   })
 
-  test("render a link to proper add a next workout", () => {
+  test("renders a link to add a new workout", () => {
     render(<WorkoutList workout={mockWorkout} />)
     const addLink = screen.getByRole("link", { name: /Add new workout/i })
     expect(addLink).toBeInTheDocument()

@@ -19,18 +19,18 @@ const mockWorkout = {
   exercises: [{ name: "ola", reps: 10, id: "1", sets: 10, weight: 10 }],
 }
 
-describe("Workout tests", () => {
-  test("this shows if the workout name render corrextly", () => {
+describe("WorkoutDetails", () => {
+  test("renders the workout name", () => {
     render(<WorkoutDetails workout={mockWorkout} />)
     expect(screen.getByText("Workout 1")).toBeInTheDocument()
   })
 
-  test("this shows the exercise name", () => {
+  test("renders the exercise name", () => {
     render(<WorkoutDetails workout={mockWorkout} />)
     expect(screen.getByText("ola")).toBeInTheDocument()
   })
 
-  test("this shows he reps sets weight", () => {
+  test("renders sets, reps and weight", () => {
     render(<WorkoutDetails workout={mockWorkout} />)
     expect(screen.getByText(/10 sets · 10 reps · 10 kg/)).toBeInTheDocument()
   })

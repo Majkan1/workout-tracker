@@ -1,0 +1,32 @@
+name: Keep Supabase alive
+
+on:
+  schedule:
+    # Monday and Thursday 06:00 UTC — Supabase free tier pauses after 7 idle days
+    - cron: "0 6 * * 1,4"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Run a query against the database
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: |
+          npm install pg@8 --no-save --no-package-lock
+          cat > ping.mjs <<'EOF'
+          import pg from "pg"
+
+          const client = new pg.Client({ connectionString: process.env.DATABASE_URL })
+          await client.connect()
+          const result = await client.query('SELECT COUNT(*)::int AS count FROM "Workout"')
+          console.log(`Database is awake — ${result.rows[0].count} workouts stored.`)
+          await client.end()
+          EOF
+          node ping.mjs

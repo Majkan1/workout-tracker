@@ -29,27 +29,35 @@ export default function ExerciseForm() {
         onSubmit={async (event) => {
           event.preventDefault()
           setError("")
+          if (!text.trim()) {
+            setError("Exercise name is required")
+            return
+          }
+          const setsNumber = Number(sets)
+          const repsNumber = Number(reps)
+          const weightNumber = Number(weight)
+          if (!setsNumber || !repsNumber) {
+            setError("Sets and reps must be at least 1")
+            return
+          }
+          if (weight.trim() === "" || Number.isNaN(weightNumber) || weightNumber < 0) {
+            setError("Weight must be 0 or more")
+            return
+          }
+          if (!workoutId) {
+            console.error("Missing workout id - cannot create exercise")
+            return
+          }
           setIsPending(true)
           try {
-            if (!text.trim()) return
-            const setsNumber = Number(sets)
-            const repsNumber = Number(reps)
-            const weightNumber = Number(weight)
-            if (!setsNumber) return
-            if (!repsNumber) return
-            if (!weightNumber) return
-            if (!workoutId) {
-              console.error("Missing workout id - cannot create exercise")
-              return
-            }
             await createExercise(text, repsNumber, setsNumber, weightNumber, workoutId)
             setText("")
             setSets("")
             setReps("")
             setWeight("")
             router.refresh()
-          } catch (error) {
-            setError("you wrote a wrong value try another one ")
+          } catch {
+            setError("Something went wrong. Please try again.")
           } finally {
             setIsPending(false)
           }
@@ -109,8 +117,7 @@ export default function ExerciseForm() {
               type="number"
               id="weight"
               name="weight"
-              min="1"
-              max="100"
+              min="0"
               value={weight}
               onChange={(e) => setWeight(e.target.value)}
             />
@@ -119,13 +126,13 @@ export default function ExerciseForm() {
 
         <button
           type="submit"
-          className="w-full cursor-pointer rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90 sm:w-auto"
+          disabled={isPending}
+          className="w-full cursor-pointer rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90 disabled:opacity-50 sm:w-auto"
         >
-          Add exercise
+          {isPending ? "Adding..." : "Add exercise"}
         </button>
-        {error && <p>You wrote wrong data ,try another one</p>}
+        {error && <p className="text-sm text-destructive">{error}</p>}
       </form>
-      <button disabled={isPending}>{isPending ? "Adding ..." : "Add an exercise"}</button>
     </section>
   )
 }

@@ -9,7 +9,8 @@ export default async function Dashboard() {
   const db = getPrisma()
   const { userId } = await auth()
 
-  if (!userId) return
+  if (!userId) return null
+
   const workout = await db.workout.findMany({
     where: {
       userId,

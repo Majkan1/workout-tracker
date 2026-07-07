@@ -6,11 +6,11 @@ import { auth } from "@clerk/nextjs/server"
 
 export async function deleteExercise(id: string) {
   const { userId } = await auth()
-  if (!userId) throw new Error("Unauthorized!")
+  if (!userId) throw new Error("Unauthorized")
 
   const exercise = await getPrisma().exercise.findUnique({
     where: { id },
-    include: { workout: true },
+    select: { workout: { select: { userId: true } } },
   })
 
   if (!exercise || exercise.workout.userId !== userId) {

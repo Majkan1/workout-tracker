@@ -2,7 +2,6 @@ name: Keep Supabase alive
 
 on:
   schedule:
-    # Monday and Thursday 06:00 UTC — Supabase free tier pauses after 7 idle days
     - cron: "0 6 * * 1,4"
   workflow_dispatch:
 

@@ -14,7 +14,7 @@ export default function EditExerciseForm({ exercise }: { exercise: Exercise }) {
   const [text, setText] = useState(exercise.name)
   const [sets, setSets] = useState(String(exercise.sets))
   const [reps, setReps] = useState(String(exercise.reps))
-  const [weight, setWeight] = useState(String(exercise.weight ?? ""))
+  const [weight, setWeight] = useState(String(exercise.weight))
   const router = useRouter()
   return (
     <section className="mx-auto mt-10 mb-10 max-w-md rounded-xl border border-border bg-card p-6">
@@ -30,21 +30,29 @@ export default function EditExerciseForm({ exercise }: { exercise: Exercise }) {
           setError("")
           setIsPending(true)
           try {
-            if (!text.trim()) return
+            if (!text.trim()) {
+              setError("Exercise name is required")
+              return
+            }
             const repsNumber = Number(reps)
             const setsNumber = Number(sets)
             const weightNumber = Number(weight)
-            if (!repsNumber) return
-            if (!setsNumber) return
-            if (!weightNumber) return
+            if (!repsNumber || !setsNumber) {
+              setError("Sets and reps must be at least 1")
+              return
+            }
+            if (weight.trim() === "" || Number.isNaN(weightNumber) || weightNumber < 0) {
+              setError("Weight must be 0 or more")
+              return
+            }
             if (!exercise.id) {
               console.error("Missing exercise id - cannot update exercise")
               return
             }
             await updateExercise(text, repsNumber, setsNumber, weightNumber, exercise.id)
             router.refresh()
-          } catch (error) {
-            setError("You wrote a wrong value, try another one")
+          } catch {
+            setError("Something went wrong. Please try again.")
           } finally {
             setIsPending(false)
           }
@@ -104,8 +112,7 @@ export default function EditExerciseForm({ exercise }: { exercise: Exercise }) {
               type="number"
               id="weight"
               name="weight"
-              min="1"
-              max="100"
+              min="0"
               value={weight}
               onChange={(e) => setWeight(e.target.value)}
             />

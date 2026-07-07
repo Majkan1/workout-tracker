@@ -43,7 +43,7 @@ export default function WorkoutDetails({ workout }: { workout: Workout }) {
                 <div className="min-w-0">
                   <p className="truncate font-medium">{item.name}</p>
                   <p className="mt-0.5 text-sm text-muted-foreground">
-                    {item.sets} sets · {item.reps} reps · {item.weight ?? "—"} kg
+                    {item.sets} sets · {item.reps} reps · {item.weight} kg
                   </p>
                 </div>
 

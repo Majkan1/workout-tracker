@@ -13,7 +13,7 @@ export async function updateExercise(
 ) {
   const { userId } = await auth()
 
-  if (!userId) throw new Error("Unauthorized access")
+  if (!userId) throw new Error("Unauthorized")
 
   const result = createExerciseSchema.safeParse({
     name,
@@ -28,11 +28,11 @@ export async function updateExercise(
 
   const exercise = await getPrisma().exercise.findUnique({
     where: { id },
-    include: { workout: true },
+    select: { workout: { select: { userId: true } } },
   })
 
   if (!exercise || exercise.workout.userId !== userId) {
-    throw new Error("Not found or anauthorized")
+    throw new Error("Not found or unauthorized")
   }
 
   await getPrisma().exercise.update({

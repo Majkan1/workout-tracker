@@ -29,7 +29,6 @@ describe("StatsGrid", () => {
   test("renders zero counts and a placeholder when there are no workouts", () => {
     render(<StatsGrid workout={[]} />)
 
-    // both the Workouts and Exercises cards show 0
     expect(screen.getAllByText("0")).toHaveLength(2)
     expect(screen.getByText("—")).toBeInTheDocument()
   })
@@ -37,8 +36,8 @@ describe("StatsGrid", () => {
   test("counts workouts, sums exercises and shows the latest workout name", () => {
     render(<StatsGrid workout={[pushDay, legDay]} />)
 
-    expect(screen.getByText("2")).toBeInTheDocument() // 2 workouts
-    expect(screen.getByText("5")).toBeInTheDocument() // 3 + 2 exercises
-    expect(screen.getByText("Push Day")).toBeInTheDocument() // first item = latest
+    expect(screen.getByText("2")).toBeInTheDocument()
+    expect(screen.getByText("5")).toBeInTheDocument() 
+    expect(screen.getByText("Push Day")).toBeInTheDocument() 
   })
 })

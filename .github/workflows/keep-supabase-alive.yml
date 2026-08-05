@@ -29,3 +29,14 @@ jobs:
           await client.end()
           EOF
           node ping.mjs
+
+      - name: Hit the Supabase REST API
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+        run: |
+          curl -sf "$SUPABASE_URL/rest/v1/Workout?select=id&limit=1" \
+            -H "apikey: $SUPABASE_ANON_KEY" \
+            -H "Authorization: Bearer $SUPABASE_ANON_KEY" \
+            -o /dev/null
+          echo "REST API request sent — this is the activity signal Supabase's pause detection actually counts."

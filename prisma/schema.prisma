@@ -1,8 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Get a free hosted Postgres database in seconds: `npx create-db`
-
 generator client {
   provider = "prisma-client"
   output   = "../generated/prisma"
@@ -13,19 +8,19 @@ datasource db {
 }
 
 model Workout {
-  id        String   @id @default(cuid())
+  id        String     @id @default(cuid())
   name      String
-  createdAt DateTime @default(now())
+  createdAt DateTime   @default(now())
   userId    String
-  exercises  Exercise[]
+  exercises Exercise[]
 }
 
 model Exercise {
-  id        String   @id @default(cuid())
+  id        String  @id @default(cuid())
   name      String
   sets      Int
   reps      Int
-  weight    Int
   workoutId String
-  workout   Workout  @relation(fields: [workoutId], references: [id], onDelete: Cascade)
-} 
+  weight    Int
+  workout   Workout @relation(fields: [workoutId], references: [id], onDelete: Cascade)
+}

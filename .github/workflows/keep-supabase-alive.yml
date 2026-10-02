@@ -35,8 +35,17 @@ jobs:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
         run: |
-          curl -sf "$SUPABASE_URL/rest/v1/Workout?select=id&limit=1" \
-            -H "apikey: $SUPABASE_ANON_KEY" \
-            -H "Authorization: Bearer $SUPABASE_ANON_KEY" \
-            -o /dev/null
-          echo "REST API request sent — this is the activity signal Supabase's pause detection actually counts."
+          if [ -z "$SUPABASE_URL" ] || [ -z "$SUPABASE_ANON_KEY" ]; then
+            echo "::error::SUPABASE_URL or SUPABASE_ANON_KEY secret is missing."
+            exit 1
+          fi
+          status=$(curl -sS -o response.txt -w "%{http_code}" \
+            "${SUPABASE_URL%/}/rest/v1/Workout?select=id&limit=1" \
+            -H "apikey: $SUPABASE_ANON_KEY")
+          echo "Supabase REST API responded with HTTP $status"
+          if [ "$status" -ge 400 ]; then
+            echo "::error::Supabase REST API request failed (HTTP $status):"
+            cat response.txt
+            exit 1
+          fi
+          echo "REST API request succeeded — this is the activity signal Supabase's pause detection actually counts."

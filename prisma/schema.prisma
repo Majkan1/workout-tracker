@@ -13,7 +13,7 @@ model Workout {
   createdAt DateTime   @default(now())
   userId    String
   exercises Exercise[]
-}
+} 
 
 model Exercise {
   id        String  @id @default(cuid())
